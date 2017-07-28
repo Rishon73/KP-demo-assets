@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Runs>
+  <RunConfiguration>
+    <Name>1</Name>
+    <IsDraftRun>false</IsDraftRun>
+    <ExecutionStartTime>2017-07-18T15:42:44.7306558-04:00</ExecutionStartTime>
+    <ExecutionEndTime>2017-07-18T15:46:58.5672443-04:00</ExecutionEndTime>
+    <IsSprinterRun>true</IsSprinterRun>
+    <ExecutionDuration />
+    <Status>Failed</Status>
+    <Tester>HPE-Shahar</Tester>
+    <IsLockedBySomeoneElse>false</IsLockedBySomeoneElse>
+    <IsLockedDueToBusinessRules>false</IsLockedDueToBusinessRules>
+    <IsViewerPermissions>false</IsViewerPermissions>
+    <IsPowerTestingOn>false</IsPowerTestingOn>
+    <RunID>1</RunID>
+  </RunConfiguration>
+  <RunConfiguration>
+    <Name>2</Name>
+    <IsDraftRun>false</IsDraftRun>
+    <ExecutionStartTime>2017-07-18T16:02:33.518973-04:00</ExecutionStartTime>
+    <ExecutionEndTime>2017-07-18T16:10:55.7288452-04:00</ExecutionEndTime>
+    <IsSprinterRun>true</IsSprinterRun>
+    <ExecutionDuration />
+    <Status>Failed</Status>
+    <Tester>HPE</Tester>
+    <IsLockedBySomeoneElse>false</IsLockedBySomeoneElse>
+    <IsLockedDueToBusinessRules>false</IsLockedDueToBusinessRules>
+    <IsViewerPermissions>false</IsViewerPermissions>
+    <IsPowerTestingOn>false</IsPowerTestingOn>
+    <RunID>2</RunID>
+  </RunConfiguration>
+  <RunConfiguration>
+    <Name>3</Name>
+    <IsDraftRun>false</IsDraftRun>
+    <ExecutionStartTime>0001-01-01T00:00:00</ExecutionStartTime>
+    <ExecutionEndTime>0001-01-01T00:00:00</ExecutionEndTime>
+    <IsSprinterRun>true</IsSprinterRun>
+    <ExecutionDuration />
+    <Status>No Run</Status>
+    <Tester>HPE</Tester>
+    <IsLockedBySomeoneElse>false</IsLockedBySomeoneElse>
+    <IsLockedDueToBusinessRules d2p1:nil="true" xmlns:d2p1="http://www.w3.org/2001/XMLSchema-instance" />
+    <IsViewerPermissions>false</IsViewerPermissions>
+    <IsPowerTestingOn d2p1:nil="true" xmlns:d2p1="http://www.w3.org/2001/XMLSchema-instance" />
+    <RunID>3</RunID>
+  </RunConfiguration>
+  <RunConfiguration>
+    <Name>4</Name>
+    <IsDraftRun>false</IsDraftRun>
+    <ExecutionStartTime>2017-07-18T16:23:51.8484446-04:00</ExecutionStartTime>
+    <ExecutionEndTime>2017-07-18T16:28:43.5822145-04:00</ExecutionEndTime>
+    <IsSprinterRun>true</IsSprinterRun>
+    <ExecutionDuration />
+    <Status>Not Completed</Status>
+    <Tester>HPE</Tester>
+    <IsLockedBySomeoneElse>false</IsLockedBySomeoneElse>
+    <IsLockedDueToBusinessRules>false</IsLockedDueToBusinessRules>
+    <IsViewerPermissions>false</IsViewerPermissions>
+    <IsPowerTestingOn>false</IsPowerTestingOn>
+    <RunID>4</RunID>
+  </RunConfiguration>
+  <RunConfiguration>
+    <Name>5</Name>
+    <IsDraftRun>false</IsDraftRun>
+    <ExecutionStartTime>0001-01-01T00:00:00</ExecutionStartTime>
+    <ExecutionEndTime>0001-01-01T00:00:00</ExecutionEndTime>
+    <IsSprinterRun>true</IsSprinterRun>
+    <ExecutionDuration />
+    <Status>No Run</Status>
+    <Tester>HPE</Tester>
+    <IsLockedBySomeoneElse>false</IsLockedBySomeoneElse>
+    <IsLockedDueToBusinessRules d2p1:nil="true" xmlns:d2p1="http://www.w3.org/2001/XMLSchema-instance" />
+    <IsViewerPermissions>false</IsViewerPermissions>
+    <IsPowerTestingOn d2p1:nil="true" xmlns:d2p1="http://www.w3.org/2001/XMLSchema-instance" />
+    <RunID>5</RunID>
+  </RunConfiguration>
+  <RunConfiguration>
+    <Name>6</Name>
+    <IsDraftRun>false</IsDraftRun>
+    <ExecutionStartTime>2017-07-18T16:34:57.5377265-04:00</ExecutionStartTime>
+    <ExecutionEndTime>2017-07-18T16:39:24.6982003-04:00</ExecutionEndTime>
+    <IsSprinterRun>true</IsSprinterRun>
+    <ExecutionDuration />
+    <Status>Passed</Status>
+    <Tester>HPE</Tester>
+    <IsLockedBySomeoneElse>false</IsLockedBySomeoneElse>
+    <IsLockedDueToBusinessRules>false</IsLockedDueToBusinessRules>
+    <IsViewerPermissions>false</IsViewerPermissions>
+    <IsPowerTestingOn>false</IsPowerTestingOn>
+    <RunID>6</RunID>
+  </RunConfiguration>
+  <RunConfiguration>
+    <Name>7</Name>
+    <IsDraftRun>false</IsDraftRun>
+    <ExecutionStartTime>2017-07-19T11:14:55.3636092-04:00</ExecutionStartTime>
+    <ExecutionEndTime>2017-07-19T11:16:55.7254486-04:00</ExecutionEndTime>
+    <IsSprinterRun>true</IsSprinterRun>
+    <ExecutionDuration />
+    <Status>Passed</Status>
+    <Tester>HPE</Tester>
+    <IsLockedBySomeoneElse>false</IsLockedBySomeoneElse>
+    <IsLockedDueToBusinessRules>false</IsLockedDueToBusinessRules>
+    <IsViewerPermissions>false</IsViewerPermissions>
+    <IsPowerTestingOn>false</IsPowerTestingOn>
+    <RunID>7</RunID>
+  </RunConfiguration>
+  <RunConfiguration>
+    <Name>8</Name>
+    <IsDraftRun>false</IsDraftRun>
+    <ExecutionStartTime>2017-07-24T18:09:34.9519286-04:00</ExecutionStartTime>
+    <ExecutionEndTime>2017-07-24T18:10:31.0161425-04:00</ExecutionEndTime>
+    <IsSprinterRun>true</IsSprinterRun>
+    <ExecutionDuration />
+    <Status>Not Completed</Status>
+    <Tester>HPE</Tester>
+    <IsLockedBySomeoneElse>false</IsLockedBySomeoneElse>
+    <IsLockedDueToBusinessRules>false</IsLockedDueToBusinessRules>
+    <IsViewerPermissions>false</IsViewerPermissions>
+    <IsPowerTestingOn>false</IsPowerTestingOn>
+    <RunID>8</RunID>
+  </RunConfiguration>
+  <RunConfiguration>
+    <Name>9</Name>
+    <IsDraftRun>false</IsDraftRun>
+    <ExecutionStartTime>2017-07-24T20:07:21.3142315-04:00</ExecutionStartTime>
+    <ExecutionEndTime>2017-07-24T20:14:41.8554594-04:00</ExecutionEndTime>
+    <IsSprinterRun>true</IsSprinterRun>
+    <ExecutionDuration />
+    <Status>Failed</Status>
+    <Tester>HPE</Tester>
+    <IsLockedBySomeoneElse>false</IsLockedBySomeoneElse>
+    <IsLockedDueToBusinessRules>false</IsLockedDueToBusinessRules>
+    <IsViewerPermissions>false</IsViewerPermissions>
+    <IsPowerTestingOn>false</IsPowerTestingOn>
+    <RunID>9</RunID>
+  </RunConfiguration>
+</Runs>

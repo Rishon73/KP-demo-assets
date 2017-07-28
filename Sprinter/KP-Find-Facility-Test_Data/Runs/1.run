@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunHistoryData objectID="0">
+  <ZipCounter>1</ZipCounter>
+  <UserActions objectID="1">
+    <Elements isCollection="True">
+      <UserActionHistoryEntry objectID="2" type="HP.MirrorTesting.BL.Modules.RunHistory.UserActionHistoryEntry, HP.Sprinter.BL.Modules">
+        <Master objectID="3" type="HP.MirrorTesting.BL.Modules.RunHistory.StationHistoryEntry, HP.Sprinter.BL.Modules">
+          <Parent cyclicReferenceObjectID="0" />
+          <ImageFileName>-1_1.jpg</ImageFileName>
+          <Data isNull="True" />
+          <StationID>-1</StationID>
+          <StationStates objectID="4">
+            <MirroringState>NotReady</MirroringState>
+            <TechnicalState>Excluded</TechnicalState>
+          </StationStates>
+          <StepErrors objectID="5">
+            <Elements isCollection="True" />
+          </StepErrors>
+          <ScreenshotUploaded>False</ScreenshotUploaded>
+        </Master>
+        <Slaves objectID="6" type="HP.MirrorTesting.BL.Modules.RunHistory.SlaveHistoryEntryCollection, HP.Sprinter.BL.Modules">
+          <Map objectID="7">
+            <Elements isCollection="True" />
+          </Map>
+        </Slaves>
+        <Time>2017-07-18T15:43:00</Time>
+        <Description>Click the device's Back button.</Description>
+        <Comment isNull="True" />
+        <UserActionIndex>1</UserActionIndex>
+        <RelevantStepIndex>1</RelevantStepIndex>
+      </UserActionHistoryEntry>
+      <UserActionHistoryEntry objectID="8" type="HP.MirrorTesting.BL.Modules.RunHistory.UserActionHistoryEntry, HP.Sprinter.BL.Modules">
+        <Master objectID="9" type="HP.MirrorTesting.BL.Modules.RunHistory.StationHistoryEntry, HP.Sprinter.BL.Modules">
+          <Parent cyclicReferenceObjectID="0" />
+          <ImageFileName>-1_2.jpg</ImageFileName>
+          <Data isNull="True" />
+          <StationID>-1</StationID>
+          <StationStates objectID="10">
+            <MirroringState>NotReady</MirroringState>
+            <TechnicalState>Excluded</TechnicalState>
+          </StationStates>
+          <StepErrors objectID="11">
+            <Elements isCollection="True" />
+          </StepErrors>
+          <ScreenshotUploaded>False</ScreenshotUploaded>
+        </Master>
+        <Slaves objectID="12" type="HP.MirrorTesting.BL.Modules.RunHistory.SlaveHistoryEntryCollection, HP.Sprinter.BL.Modules">
+          <Map objectID="13">
+            <Elements isCollection="True" />
+          </Map>
+        </Slaves>
+        <Time>2017-07-18T15:43:01</Time>
+        <Description>Tap Find a Facility label.</Description>
+        <Comment isNull="True" />
+        <UserActionIndex>2</UserActionIndex>
+        <RelevantStepIndex>1</RelevantStepIndex>
+      </UserActionHistoryEntry>
+      <UserActionHistoryEntry objectID="14" type="HP.MirrorTesting.BL.Modules.RunHistory.UserActionHistoryEntry, HP.Sprinter.BL.Modules">
+        <Master objectID="15" type="HP.MirrorTesting.BL.Modules.RunHistory.StationHistoryEntry, HP.Sprinter.BL.Modules">
+          <Parent cyclicReferenceObjectID="0" />
+          <ImageFileName>-1_3.jpg</ImageFileName>
+          <Data isNull="True" />
+          <StationID>-1</StationID>
+          <StationStates objectID="16">
+            <MirroringState>NotReady</MirroringState>
+            <TechnicalState>Excluded</TechnicalState>
+          </StationStates>
+          <StepErrors objectID="17">
+            <Elements isCollection="True" />
+          </StepErrors>
+          <ScreenshotUploaded>False</ScreenshotUploaded>
+        </Master>
+        <Slaves objectID="18" type="HP.MirrorTesting.BL.Modules.RunHistory.SlaveHistoryEntryCollection, HP.Sprinter.BL.Modules">
+          <Map objectID="19">
+            <Elements isCollection="True" />
+          </Map>
+        </Slaves>
+        <Time>2017-07-18T15:43:32</Time>
+        <Description>Tap Allow button.</Description>
+        <Comment isNull="True" />
+        <UserActionIndex>3</UserActionIndex>
+        <RelevantStepIndex>2</RelevantStepIndex>
+      </UserActionHistoryEntry>
+      <UserActionHistoryEntry objectID="20" type="HP.MirrorTesting.BL.Modules.RunHistory.UserActionHistoryEntry, HP.Sprinter.BL.Modules">
+        <Master objectID="21" type="HP.MirrorTesting.BL.Modules.RunHistory.StationHistoryEntry, HP.Sprinter.BL.Modules">
+          <Parent cyclicReferenceObjectID="0" />
+          <ImageFileName>-1_4.jpg</ImageFileName>
+          <Data isNull="True" />
+          <StationID>-1</StationID>
+          <StationStates objectID="22">
+            <MirroringState>NotReady</MirroringState>
+            <TechnicalState>Excluded</TechnicalState>
+          </StationStates>
+          <StepErrors objectID="23">
+            <Elements isCollection="True" />
+          </StepErrors>
+          <ScreenshotUploaded>False</ScreenshotUploaded>
+        </Master>
+        <Slaves objectID="24" type="HP.MirrorTesting.BL.Modules.RunHistory.SlaveHistoryEntryCollection, HP.Sprinter.BL.Modules">
+          <Map objectID="25">
+            <Elements isCollection="True" />
+          </Map>
+        </Slaves>
+        <Time>2017-07-18T15:43:40</Time>
+        <Description>Tap Close button.</Description>
+        <Comment isNull="True" />
+        <UserActionIndex>4</UserActionIndex>
+        <RelevantStepIndex>4</RelevantStepIndex>
+      </UserActionHistoryEntry>
+      <UserActionHistoryEntry objectID="26" type="HP.MirrorTesting.BL.Modules.RunHistory.UserActionHistoryEntry, HP.Sprinter.BL.Modules">
+        <Master objectID="27" type="HP.MirrorTesting.BL.Modules.RunHistory.StationHistoryEntry, HP.Sprinter.BL.Modules">
+          <Parent cyclicReferenceObjectID="0" />
+          <ImageFileName>-1_5.jpg</ImageFileName>
+          <Data isNull="True" />
+          <StationID>-1</StationID>
+          <StationStates objectID="28">
+            <MirroringState>NotReady</MirroringState>
+            <TechnicalState>Excluded</TechnicalState>
+          </StationStates>
+          <StepErrors objectID="29">
+            <Elements isCollection="True" />
+          </StepErrors>
+          <ScreenshotUploaded>True</ScreenshotUploaded>
+        </Master>
+        <Slaves objectID="30" type="HP.MirrorTesting.BL.Modules.RunHistory.SlaveHistoryEntryCollection, HP.Sprinter.BL.Modules">
+          <Map objectID="31">
+            <Elements isCollection="True" />
+          </Map>
+        </Slaves>
+        <Time>2017-07-18T15:43:52</Time>
+        <Description>Tap SearchIcon label.</Description>
+        <Comment isNull="True" />
+        <UserActionIndex>5</UserActionIndex>
+        <RelevantStepIndex>5</RelevantStepIndex>
+      </UserActionHistoryEntry>
+    </Elements>
+  </UserActions>
+  <RunDefinition objectID="32">
+    <ContainedAut objectID="33">
+      <IsDefault>True</IsDefault>
+      <ID>f5359cbf-a715-4eaa-aaff-abadfe776604</ID>
+      <Name>New Application</Name>
+      <Description isNull="True" />
+      <AddinsDefinition objectID="34">
+        <Elements isCollection="True" />
+      </AddinsDefinition>
+      <ExecutionType>Web</ExecutionType>
+      <StationsAutDefinition objectID="35">
+        <RecorderAutDefinition objectID="36">
+          <ExecutionDefinition objectID="37" type="HP.MirrorTesting.Common.WebExecutionDefinition, HP.Sprinter.Common">
+            <URL></URL>
+            <Browser>IEXPLORE</Browser>
+            <WebReplayType>Event</WebReplayType>
+          </ExecutionDefinition>
+          <RunMode>CreateNew</RunMode>
+          <CloseAutAtRunEnd>False</CloseAutAtRunEnd>
+        </RecorderAutDefinition>
+        <Elements isCollection="True">
+          <StationAutDefinition cyclicReferenceObjectID="36" />
+        </Elements>
+      </StationsAutDefinition>
+    </ContainedAut>
+    <ID objectID="38">
+      <ID>1</ID>
+      <TestInstanceID>0</TestInstanceID>
+    </ID>
+    <InRunQueue>False</InRunQueue>
+    <RunSettings objectID="39">
+      <Name>1</Name>
+      <IsDraftRun>False</IsDraftRun>
+      <ExecutionStartTime>2017-07-18T15:42:44</ExecutionStartTime>
+      <ExecutionEndTime>2017-07-18T15:46:58</ExecutionEndTime>
+      <IsSprinterRun>True</IsSprinterRun>
+      <ExecutionDuration>00:04:13.8365885</ExecutionDuration>
+      <Status>Failed</Status>
+      <Tester>HPE-Shahar</Tester>
+      <Comments isNull="True" />
+      <IsLockedBySomeoneElse>False</IsLockedBySomeoneElse>
+      <IsLockedDueToBusinessRules type="System.Boolean, mscorlib">False</IsLockedDueToBusinessRules>
+      <IsViewerPermissions>False</IsViewerPermissions>
+      <IsPowerTestingOn type="System.Boolean, mscorlib">False</IsPowerTestingOn>
+      <RunID>1</RunID>
+    </RunSettings>
+    <TestID objectID="40">
+      <IntID>0</IntID>
+    </TestID>
+    <StationsDefinition objectID="41">
+      <Collection objectID="42">
+        <Elements isCollection="True">
+          <StationDefinition objectID="43">
+            <MachineDefinition objectID="44">
+              <CredentialsInfo objectID="45">
+                <Source>CurrUser</Source>
+              </CredentialsInfo>
+              <Location objectID="46" type="HP.MirrorTesting.BL.Data.TestDefinitionData.RunDefinition.Host.LocationDefinition, HP.Sprinter.BL.Data">
+                <HostNameOrAddress>localhost</HostNameOrAddress>
+                <HostName>localhost</HostName>
+                <Address isNull="True" />
+              </Location>
+              <Credentials objectID="47" type="HP.MirrorTesting.BL.Data.TestDefinitionData.RunDefinition.Host.CredentialsDefinition, HP.Sprinter.BL.Data">
+                <EncryptedPassword isNull="True" />
+                <Username isNull="True" />
+                <FullUsername isNull="True" />
+                <UserDomain isNull="True" />
+              </Credentials>
+            </MachineDefinition>
+            <AgentDefinition objectID="48">
+              <Name>Primary</Name>
+              <Description>Primary Machine</Description>
+              <ImageSource>Host</ImageSource>
+              <Protocol>Pipe</Protocol>
+              <StationType>Recorder</StationType>
+            </AgentDefinition>
+            <StationAutDefinitionPointer objectID="49">
+              <PointedID>0</PointedID>
+              <PointerType>StationAut</PointerType>
+            </StationAutDefinitionPointer>
+            <IsExcluded>False</IsExcluded>
+            <LastModificationTime isNull="True" />
+          </StationDefinition>
+        </Elements>
+      </Collection>
+    </StationsDefinition>
+    <AutDefinition cyclicReferenceObjectID="33" />
+    <StepsDefinition objectID="50">
+      <Elements isCollection="True">
+        <StepDefinition objectID="51">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>1</StepIndex>
+          <Name>Step 1</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap navigationBarBackground view.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>Passed</Status>
+          <ExecutionTime>2017-07-18T15:43:23</ExecutionTime>
+          <DesignTimeAttachments objectID="52">
+            <Elements isCollection="True" />
+          </DesignTimeAttachments>
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="53">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap navigationBarBackground view.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>khic1snz.kxx</LocalStepDirectory>
+          <Context objectID="54">
+            <Elements isCollection="True">
+              <StepContext objectID="55">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="56">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="57">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>2</StepIndex>
+          <Name>Step 2</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap Find a Facility label.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>Passed</Status>
+          <ExecutionTime>2017-07-18T15:43:07</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="58">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap Find a Facility label.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>fd1aszm3.vvc</LocalStepDirectory>
+          <Context objectID="59">
+            <Elements isCollection="True">
+              <StepContext objectID="60">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="61">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="62">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>3</StepIndex>
+          <Name>Step 3</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap Allow button.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>Passed</Status>
+          <ExecutionTime>2017-07-18T15:43:35</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="63">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap Allow button.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>014ml4cq.3yw</LocalStepDirectory>
+          <Context objectID="64">
+            <Elements isCollection="True">
+              <StepContext objectID="65">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="66">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="67">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>4</StepIndex>
+          <Name>Step 4</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap Close button.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>Passed</Status>
+          <ExecutionTime>2017-07-18T15:43:44</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="68">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap Close button.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>jqcguttx.3l5</LocalStepDirectory>
+          <Context objectID="69">
+            <Elements isCollection="True">
+              <StepContext objectID="70">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="71">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="72">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>5</StepIndex>
+          <Name>Step 5</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap SearchIcon label.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>Failed</Status>
+          <ExecutionTime>2017-07-18T15:44:29</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath>Step5ActualResult_-2017-07-18_15-46-11-325.jpg</ActualResultsImagePath>
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="73">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>True</IsCurrent>
+          <TextualDescription>Tap SearchIcon label.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>qvg1aqkv.o0j</LocalStepDirectory>
+          <Context objectID="74">
+            <Elements isCollection="True">
+              <StepContext objectID="75">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="76">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="77">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>6</StepIndex>
+          <Name>Step 6</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Set focus to search_address_edit_text input field.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="78">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Set focus to search_address_edit_text input field.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>3nc3blru.pyq</LocalStepDirectory>
+          <Context objectID="79">
+            <Elements isCollection="True">
+              <StepContext objectID="80">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="81">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="82">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>7</StepIndex>
+          <Name>Step 9</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Enter Pleasanton, CA.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="83">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Enter Pleasanton, CA.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>g3xf521w.ji4</LocalStepDirectory>
+          <Context objectID="84">
+            <Elements isCollection="True">
+              <StepContext objectID="85">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="86">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="87">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>8</StepIndex>
+          <Name>Step 10</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Click the device's Back button.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="88">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Click the device's Back button.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>5ukes3nh.a1w</LocalStepDirectory>
+          <Context objectID="89">
+            <Elements isCollection="True">
+              <StepContext objectID="90">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="91">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="92">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>9</StepIndex>
+          <Name>Step 11</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap Find a Facility label.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="93">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap Find a Facility label.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>nootfpoh.l0i</LocalStepDirectory>
+          <Context objectID="94">
+            <Elements isCollection="True">
+              <StepContext objectID="95">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="96">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="97">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>10</StepIndex>
+          <Name>Step 12</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap Allow button.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="98">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap Allow button.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>5w4lqsqf.3xs</LocalStepDirectory>
+          <Context objectID="99">
+            <Elements isCollection="True">
+              <StepContext objectID="100">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="101">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="102">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>11</StepIndex>
+          <Name>Step 13</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap Close button.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="103">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap Close button.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>hxoqlpuo.0vc</LocalStepDirectory>
+          <Context objectID="104">
+            <Elements isCollection="True">
+              <StepContext objectID="105">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="106">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="107">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>12</StepIndex>
+          <Name>Step 14</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap SearchIcon label.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="108">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap SearchIcon label.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>qqhc4z3s.bhp</LocalStepDirectory>
+          <Context objectID="109">
+            <Elements isCollection="True">
+              <StepContext objectID="110">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="111">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="112">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>13</StepIndex>
+          <Name>Step 15</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Enter 94566.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="113">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Enter 94566.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>t2140cfy.tvj</LocalStepDirectory>
+          <Context objectID="114">
+            <Elements isCollection="True">
+              <StepContext objectID="115">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="116">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="117">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>14</StepIndex>
+          <Name>Step 16</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Set focus to search_address_edit_text input field.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="118">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Set focus to search_address_edit_text input field.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>siw2d1g2.nq2</LocalStepDirectory>
+          <Context objectID="119">
+            <Elements isCollection="True">
+              <StepContext objectID="120">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="121">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="122">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>15</StepIndex>
+          <Name>Step 19</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Enter 94566.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;rem&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</ExpectedResults>
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="123">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Enter 94566.</TextualDescription>
+          <TextualExpectedResults>rem</TextualExpectedResults>
+          <LocalStepDirectory>5nbrmhr0.qnq</LocalStepDirectory>
+          <Context objectID="124">
+            <Elements isCollection="True">
+              <StepContext objectID="125">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="126">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="127">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>16</StepIndex>
+          <Name>Step 20</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap the Enter keyboard key.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="128">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap the Enter keyboard key.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>2n45qa2k.a4y</LocalStepDirectory>
+          <Context objectID="129">
+            <Elements isCollection="True">
+              <StepContext objectID="130">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="131">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="132">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>17</StepIndex>
+          <Name>Step 25</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap Google Map view.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="133">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap Google Map view.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>gggqqwjg.3h4</LocalStepDirectory>
+          <Context objectID="134">
+            <Elements isCollection="True">
+              <StepContext objectID="135">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="136">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="137">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>18</StepIndex>
+          <Name>Step 26</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap Filter label.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="138">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap Filter label.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>teccm2of.3b1</LocalStepDirectory>
+          <Context objectID="139">
+            <Elements isCollection="True">
+              <StepContext objectID="140">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="141">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="142">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>19</StepIndex>
+          <Name>Step 27</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap Pharmacy checked label.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="143">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap Pharmacy checked label.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>sfgjkhe3.lfv</LocalStepDirectory>
+          <Context objectID="144">
+            <Elements isCollection="True">
+              <StepContext objectID="145">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="146">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="147">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>20</StepIndex>
+          <Name>Step 28</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap OK button.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="148">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap OK button.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>1lpiin0m.rqj</LocalStepDirectory>
+          <Context objectID="149">
+            <Elements isCollection="True">
+              <StepContext objectID="150">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="151">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+        <StepDefinition objectID="152">
+          <Id>-1</Id>
+          <RunStepId>0</RunStepId>
+          <TestId>3</TestId>
+          <SourceTestName isNull="True" />
+          <StepIndex>21</StepIndex>
+          <Name>Step 29</Name>
+          <Description>&lt;html&gt;&lt;body&gt;&lt;span style="font-family: 'Arial';font-style: Normal;font-weight: normal;font-size: 8.00pt;"&gt;Tap view.&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</Description>
+          <Status>No Run</Status>
+          <ExecutionTime>0001-01-01T00:00:00</ExecutionTime>
+          <DesignTimeAttachments cyclicReferenceObjectID="52" />
+          <ExpectedResults isNull="True" />
+          <TextualActualResults isNull="True" />
+          <ActualResults isNull="True" />
+          <ActualResultsImagePath isNull="True" />
+          <RuntimeAttachments cyclicReferenceObjectID="34" />
+          <RuntimeAttachmentDefinitions cyclicReferenceObjectID="52" />
+          <SnapshotDefinition objectID="153">
+            <SnapshotPartialPath isNull="True" />
+          </SnapshotDefinition>
+          <IsCurrent>False</IsCurrent>
+          <TextualDescription>Tap view.</TextualDescription>
+          <TextualExpectedResults></TextualExpectedResults>
+          <LocalStepDirectory>ts44cmno.scb</LocalStepDirectory>
+          <Context objectID="154">
+            <Elements isCollection="True">
+              <StepContext objectID="155">
+                <TestName>KP-Find-Facility-Test</TestName>
+                <IsStepOwner>True</IsStepOwner>
+              </StepContext>
+            </Elements>
+          </Context>
+          <UserDefinedFieldValues objectID="156">
+            <Elements isCollection="True" />
+          </UserDefinedFieldValues>
+          <BPTStepContainer isNull="True" />
+          <ContainerRun cyclicReferenceObjectID="32" />
+          <IsDirty>True</IsDirty>
+        </StepDefinition>
+      </Elements>
+    </StepsDefinition>
+    <HierarchyRoot isNull="True" />
+    <Parameters objectID="157">
+      <Elements isCollection="True" />
+    </Parameters>
+    <Attachments cyclicReferenceObjectID="52" />
+    <ComputedStatus>Failed</ComputedStatus>
+  </RunDefinition>
+  <Comments objectID="158">
+    <Elements isCollection="True" />
+  </Comments>
+  <Bookmarks objectID="159">
+    <Elements isCollection="True" />
+  </Bookmarks>
+  <ReportedBugs objectID="160">
+    <Elements isCollection="True" />
+  </ReportedBugs>
+</RunHistoryData>
