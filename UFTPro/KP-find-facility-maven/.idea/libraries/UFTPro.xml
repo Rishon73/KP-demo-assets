@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="UFTPro">
+    <CLASSES>
+      <root url="file://C:/Program Files (x86)/HP/Unified Functional Testing/SDK/Java" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://C:/Program Files (x86)/HP/Unified Functional Testing/SDK/Java" />
+    </SOURCES>
+    <jarDirectory url="file://C:/Program Files (x86)/HP/Unified Functional Testing/SDK/Java" recursive="false" />
+    <jarDirectory url="file://C:/Program Files (x86)/HP/Unified Functional Testing/SDK/Java" recursive="false" type="SOURCES" />
+  </library>
+</component>
