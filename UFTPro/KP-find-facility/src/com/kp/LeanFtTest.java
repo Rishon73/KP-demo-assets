@@ -2,6 +2,7 @@ package com.kp;
 
 import com.hp.lft.sdk.mobile.Button;
 import com.hp.lft.sdk.mobile.Label;
+import com.sun.org.apache.xml.internal.dtm.ref.DTMDefaultBaseIterators;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,7 +40,7 @@ public class LeanFtTest extends UnitTestClassBase {
     public void setUp() throws Exception {
         appIdentifier = "org.kp.m";
         INSTALL_APP = false;
-        HIGHLIGHT = false;
+        HIGHLIGHT = true;
 
         device = initDevice();
         if (device != null) {
@@ -72,48 +73,46 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Test
     public void test() throws GeneralLeanFtException {
+        Application testObject = device.describe(Application.class, new ApplicationDescription.Builder().identifier(appIdentifier).packaged(false).build());
+
         if (dontStart) return;
 
         // Tap "Find a Facility" button
         System.out.println("Tap \"Find a Facility\" button");
         if (HIGHLIGHT)
-            device.describe(Application.class, new ApplicationDescription.Builder()
-                    .identifier(appIdentifier).packaged(false).build()).describe(Label.class, new LabelDescription.Builder()
-                    .text("Find a Facility").className("Label").resourceId("org.kp.m:id/sign_in_facility_locator").mobileCenterIndex(8).build()).highlight();
-        device.describe(Application.class, new ApplicationDescription.Builder()
-                .identifier(appIdentifier).packaged(false).build()).describe(Label.class, new LabelDescription.Builder()
-                .text("Find a Facility").className("Label").resourceId("org.kp.m:id/sign_in_facility_locator").mobileCenterIndex(8).build()).tap();
+            testObject.describe(Label.class, new LabelDescription.Builder().text("Find a Facility").className("Label")
+                    .resourceId("org.kp.m:id/sign_in_facility_locator").mobileCenterIndex(8).build()).highlight();
+        testObject.describe(Label.class, new LabelDescription.Builder().text("Find a Facility").className("Label")
+                .resourceId("org.kp.m:id/sign_in_facility_locator").mobileCenterIndex(8).build()).tap();
 
         // Tap "Allow" to device's locations
         System.out.println("Tap \"Allow\" to device's locations");
         if (INSTALL_APP) {
             if (HIGHLIGHT)
-                device.describe(Application.class, new ApplicationDescription.Builder()
-                        .identifier("com.google.android.packageinstaller").packaged(false).build()).describe(Button.class, new ButtonDescription.Builder()
-                        .text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).highlight();
-            device.describe(Application.class, new ApplicationDescription.Builder()
-                    .identifier("com.google.android.packageinstaller").packaged(false).build()).describe(Button.class, new ButtonDescription.Builder()
-                    .text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).tap();
+                testObject.describe(Button.class, new ButtonDescription.Builder().text("Allow").className("Button")
+                        .resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).highlight();
+            testObject.describe(Button.class, new ButtonDescription.Builder().text("Allow").className("Button")
+                    .resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).tap();
         }
 
         // Tap "Close" the important alert
         System.out.println("Tap \"Close\" the important alert");
         if (HIGHLIGHT)
-            device.describe(Application.class, new ApplicationDescription.Builder()
-                    .identifier(appIdentifier).packaged(false).build()).describe(Button.class, new ButtonDescription.Builder()
+            device.describe(Application.class, new ApplicationDescription.Builder().identifier(appIdentifier).packaged(false).build())
+                    .describe(Button.class, new ButtonDescription.Builder()
                     .text("Close").className("Button").resourceId("android:id/button2").mobileCenterIndex(0).build()).highlight();
-        device.describe(Application.class, new ApplicationDescription.Builder()
-                .identifier(appIdentifier).packaged(false).build()).describe(Button.class, new ButtonDescription.Builder()
+        device.describe(Application.class, new ApplicationDescription.Builder().identifier(appIdentifier).packaged(false).build())
+                .describe(Button.class, new ButtonDescription.Builder()
                 .text("Close").className("Button").resourceId("android:id/button2").mobileCenterIndex(0).build()).tap();
 
         // Tap magnifying glass
         System.out.println("Tap magnifying glass");
         if (HIGHLIGHT)
-            device.describe(Application.class, new ApplicationDescription.Builder()
-                    .identifier(appIdentifier).packaged(false).build()).describe(Label.class, new LabelDescription.Builder()
+            device.describe(Application.class, new ApplicationDescription.Builder().identifier(appIdentifier).packaged(false).build())
+                    .describe(Label.class, new LabelDescription.Builder()
                     .accessibilityId("SearchIcon").className("Label").mobileCenterIndex(1).build()).highlight();
-        device.describe(Application.class, new ApplicationDescription.Builder()
-                .identifier(appIdentifier).packaged(false).build()).describe(Label.class, new LabelDescription.Builder()
+        device.describe(Application.class, new ApplicationDescription.Builder().identifier(appIdentifier).packaged(false).build())
+                .describe(Label.class, new LabelDescription.Builder()
                 .accessibilityId("SearchIcon").className("Label").mobileCenterIndex(1).build()).tap();
 
         // Enter Search string
@@ -200,7 +199,7 @@ public class LeanFtTest extends UnitTestClassBase {
                     .text("OK").className("Button").resourceId("android:id/button1").mobileCenterIndex(0).build()).tap();
 
         } catch (GeneralLeanFtException err) {
-            System.out.println("[ERR] error in initAppAfterInstall(): " + err.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + err.getStackTrace());
+            System.out.println("[ERR] error in initApp(): " + err.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + err.getStackTrace());
             return false;
         }
         return true;
@@ -219,10 +218,11 @@ public class LeanFtTest extends UnitTestClassBase {
             System.out.println("Init device capabilities for test...");
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
-            description.setOsVersion("> 6.0");
-            description.setName("Nexus 7");
+            //description.setOsVersion("> 6.0");
+            //description.setName("S6");
             //description.setModel("Sony");
-            return MobileLab.lockDevice(description);
+            //return MobileLab.lockDevice(description);
+            return MobileLab.lockDeviceById("0a9e0bfe");
         } catch (GeneralLeanFtException err) {
             System.out.println("[ERR] failed allocating device: " + err.getMessage());
             return null;
