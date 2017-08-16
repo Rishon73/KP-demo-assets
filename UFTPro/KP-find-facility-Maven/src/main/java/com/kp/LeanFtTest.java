@@ -12,6 +12,8 @@ import com.hp.lft.sdk.mobile.*;
 import com.hp.lft.report.*;
 import unittesting.*;
 import java.awt.*;
+import java.io.*;
+import java.sql.Time;
 
 public class LeanFtTest extends UnitTestClassBase {
     private static String APP_VERSION;
@@ -23,6 +25,7 @@ public class LeanFtTest extends UnitTestClassBase {
     private static boolean noProblem;
     private static Application app;
     private static KPAppModel appModel;
+    private static String DEVICE_LOGS_FOLDER;
 
     public LeanFtTest() {
         //Change this constructor to private if you supply your own public constructor
@@ -43,8 +46,9 @@ public class LeanFtTest extends UnitTestClassBase {
     public void setUp() throws Exception {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
+        DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
         INSTALL_APP = false;
-        HIGHLIGHT = false;
+        HIGHLIGHT = true;
 
         try {
             device = initDevice();
@@ -66,7 +70,6 @@ public class LeanFtTest extends UnitTestClassBase {
                 } else
                     app.restart();
 
-                noProblem = initApp();
             } else {
                 System.out.println("Device couldn't be allocated, exiting script");
                 noProblem = false;
@@ -85,7 +88,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Test
     public void test() throws GeneralLeanFtException {
-        if (!noProblem) return;
+        if (!initApp()) return;
 
         try {
             // Tap "Find a Facility" button
@@ -155,16 +158,23 @@ public class LeanFtTest extends UnitTestClassBase {
                 app.describe(Button.class, new ButtonDescription.Builder().text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).tap();
             }
             System.out.println("\n*** Test Completed Successfully ***");
+
         } catch (GeneralReplayException grex) {
-            System.out.println("Debug: " + grex.getMessage() + "\n*Err number " + grex.getErrorCode() + "\n" +grex.toString());
-            // Err number '-110' (The connection to the device was lost. [error 2036])
-            if (String.valueOf(grex.getErrorCode()) == "-111")
-                System.out.println("The connection to the device was lost. [error 2036]");
-            // Err number '-111' (Verify that this object's properties match an object currently displayed in your application)
-            if ((String.valueOf(grex.getErrorCode())) == "-110")
-                System.out.println("Object cannot be found. Verify that this object's properties match an object currently displayed in your application.");
+            System.out.println("///Debug: " + grex.getMessage() + "\n*Err number ==" + grex.getErrorCode() + "==///");
+            // Err number -110 - device connectivity issues [errors 2036, 2022]
+            if (grex.getErrorCode() == -110)
+                System.out.println(grex.getMessage());
+            // Err number '-111' - Object identification issues
+            if (grex.getErrorCode() == -111) {
+                //System.out.println("Object cannot be found. Verify that this object's properties match an object currently displayed in your application.");
+                System.out.println(grex.getMessage());
+            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            System.out.println("In test() -> finally statement");
+            String timeStamp = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new java.util.Date());
+            writeToFile(device.getLogs(), DEVICE_LOGS_FOLDER + "DeviceLog_" + device.getId() + "_" + timeStamp + ".txt");
         }
     }
 
@@ -178,7 +188,12 @@ public class LeanFtTest extends UnitTestClassBase {
             //app.describe(Button.class, new ButtonDescription.Builder().text("OK").className("Button").resourceId("android:id/button1").mobileCenterIndex(0).build()).tap();
 
         } catch (GeneralLeanFtException err) {
-            System.out.println("[Error] error in initApp(): " + err.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + err.getStackTrace());
+            try {
+                System.out.println("[Error] error in initApp(): " + err.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + err.getStackTrace());
+            } catch (Exception ex) {
+                System.out.println("[Error] error in initApp() -> device.getLogs(): " + ex.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + ex.getStackTrace());
+                return false;
+            }
             return false;
         }
         return true;
@@ -195,16 +210,30 @@ public class LeanFtTest extends UnitTestClassBase {
     private Device initDevice() {
         try {
             System.out.println("Init device capabilities for test...");
-            //DeviceDescription description = new DeviceDescription();
-            //description.setOsType("Android");
-            //description.setOsVersion("> 6.0");
+            DeviceDescription description = new DeviceDescription();
+            description.setOsType("Android");
+            description.setOsVersion("> 6.0");
             //description.setName("Nexus 7");
             //description.setModel("Sony");
-            //return MobileLab.lockDevice(description);
-            return MobileLab.lockDeviceById("0a9e0bfe");
+            return MobileLab.lockDevice(description);
+            //return MobileLab.lockDeviceById("0a9e0bfe");
         } catch (GeneralLeanFtException err) {
             System.out.println("[Error] failed allocating device: " + err.getMessage());
             return null;
+        }
+    }
+
+    private void writeToFile(String text, String fileName) {
+        System.out.println("test length:" + text.length() + "\nFile name: " + fileName);
+        PrintWriter writer = null;
+        try {
+            File logFile = new File(fileName);
+            writer = new java.io.PrintWriter(logFile);
+            writer.println(text);
+        } catch (FileNotFoundException fnfEx) {
+            System.out.println(fnfEx.getMessage());
+        } finally {
+            if (writer != null) writer.close();
         }
     }
 }

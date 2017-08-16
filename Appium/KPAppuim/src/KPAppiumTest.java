@@ -8,16 +8,17 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.TouchAction;
 
 public class KPAppiumTest {
     private AndroidDriver driver = null;
-    private final static String zipCode = "94566";
+    private final static String zipCode = "90210";
 
     @Before
     public void setup() {
         // Global vars for setup
         String MC_PROTOCOL = "http://";
-        String MC_SERVER_IP = "Shiff-MacBook-Pro.local";
+        String MC_SERVER_IP = "dockerserver.aos.com";
         String MC_SERVER_USER = "admin@default.com";
         String MC_SERVER_PASSWORD = "Password1";
         String MC_PORT = ":8094";
@@ -38,6 +39,7 @@ public class KPAppiumTest {
             // Set MC Server credentials (could be skipped if "Anonymous access" is enabled for Appium scripts in the Administration settings).
             capabilities.setCapability("userName", MC_SERVER_USER);
             capabilities.setCapability("password", MC_SERVER_PASSWORD);
+            System.out.println("================== " + MC_PROTOCOL + MC_SERVER_IP + MC_PORT + "/wd/hub ==================");
 
             // Create a session to the MC server
             driver = new AndroidDriver(new URL(MC_PROTOCOL + MC_SERVER_IP + MC_PORT + "/wd/hub"), capabilities);
@@ -60,36 +62,70 @@ public class KPAppiumTest {
 
     @Test
     public void TestFindFacility() {
-        WebElement signIn = driver.findElementById("org.kp.m:id/sign_in_button");
-        signIn.click();
+        WebElement element;
+        element = driver.findElementById("org.kp.m:id/sign_in_button");
+        element.click();
 
-        WebElement ok1 = driver.findElementById("android:id/button1");
-        ok1.click();
+        element = driver.findElementById("android:id/button1");
+        element.click();
 
         System.out.println("Click Find facility button");
-        WebElement findFacility = driver.findElementById("org.kp.m:id/sign_in_facility_locator");
-        findFacility.click();
+        element = driver.findElementById("org.kp.m:id/sign_in_facility_locator");
+        element.click();
 
-        System.out.println("Check if 'Allow location...' is there, click the 'Allow' if it is");
+        System.out.println("Check if 'Allow location...' is there...");
         if (isElementPresent("com.android.packageinstaller:id/permission_allow_button")) {
-            WebElement allow1 = driver.findElementById("com.android.packageinstaller:id/permission_allow_button");
-            allow1.click();
+            element = driver.findElementById("com.android.packageinstaller:id/permission_allow_button");
+            element.click();
         }
 
         System.out.println("Click the 'Close' important message");
-        WebElement close1 = driver.findElementById("android:id/button2");
-        close1.click();
+        element = driver.findElementById("android:id/button2");
+        element.click();
 
         System.out.println("Click the search icon");
-        WebElement searchIcon = driver.findElementByAccessibilityId("SearchIcon");
-        searchIcon.click();
+        element = driver.findElementByAccessibilityId("SearchIcon");
+        element.click();
 
         System.out.println("Type the zipcode");
-        WebElement searchField = driver.findElementById("org.kp.m:id/search_address_edit_text");
-        searchField.click();
-        searchField.sendKeys(zipCode);
+        element = driver.findElementById("org.kp.m:id/search_address_edit_text");
+        element.click();
+        element.sendKeys(zipCode);
 
-        System.out.println("and so on...");
+        System.out.println("Tap on the Google Maps 'search' icon");
+        TouchAction touchAction=new TouchAction(driver);
+        touchAction.press(1121, 1492).waitAction(200).release().perform();
+        //touchAction.tap(1150, 1280).perform();
+
+        windowSync(1500);
+
+        System.out.println("Open filters");
+        element = driver.findElementByAccessibilityId("Filter");
+        element.click();
+
+        System.out.println("Additional Services");
+        element = driver.findElementById("org.kp.m:id/checked_row_text_view");
+        element.click();
+
+        System.out.println("Click Ok");
+        element = driver.findElementById("android:id/button1");
+        element.click();
+
+        System.out.println("Display List view");
+        element = driver.findElementById("org.kp.m:id/locator_list_button");
+        element.click();
+
+        System.out.println("Select a facility");
+        element = driver.findElementById("org.kp.m:id/locator_favorites_row_title");
+        element.click();
+
+        System.out.println("Check if 'Allow access to contact...' is there...");
+        if (isElementPresent("com.android.packageinstaller:id/permission_allow_button")) {
+            element = driver.findElementById("com.android.packageinstaller:id/permission_allow_button");
+            element.click();
+        }
+
+        System.out.println("=== Test completed ===");
     }
 
     @After
@@ -107,6 +143,14 @@ public class KPAppiumTest {
             return true;
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    private void windowSync(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException err){
+            System.out.println("[Error] error in windowSync(int duration): " + err.getMessage());
         }
     }
 }
