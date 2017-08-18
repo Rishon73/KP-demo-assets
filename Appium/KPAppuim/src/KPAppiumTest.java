@@ -19,8 +19,8 @@ public class KPAppiumTest {
         // Global vars for setup
         String MC_PROTOCOL = "http://";
         String MC_SERVER_IP = "52.52.20.210";
-        String MC_SERVER_USER = "admin@default.com";
-        String MC_SERVER_PASSWORD = "Password1";
+        String MC_SERVER_USER = "manu.mahendran@pwc.com";
+        String MC_SERVER_PASSWORD = "Welc0me!";
         String MC_PORT = ":8084";
         String APP_PACKAGE = "org.kp.m";
         String APP_ACTIVITY = "org.kp.m.activity.SplashActivity";
