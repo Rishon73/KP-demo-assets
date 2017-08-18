@@ -26,6 +26,7 @@ public class LeanFtTest extends UnitTestClassBase {
     private static Application app;
     private static KPAppModel appModel;
     private static String DEVICE_LOGS_FOLDER;
+    private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
 
     public LeanFtTest() {
         //Change this constructor to private if you supply your own public constructor
@@ -47,17 +48,18 @@ public class LeanFtTest extends UnitTestClassBase {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
         DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
-        INSTALL_APP = false;
+        INSTALL_APP = true;
         HIGHLIGHT = true;
 
+        appDescription[0] = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
+        System.out.println(appDescription[0].getName());
+        //appDescription = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
         try {
             device = initDevice();
             if (device != null) {
                 appModel = new KPAppModel(device);
-                ApplicationDescription appDescription = new ApplicationDescription.Builder()
-                        .identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
-                app = device.describe(Application.class, appDescription);
 
+                //app = device.describe(Application.class, appDescription);
                 currentDevice = "\"" + device.getName() + "\" (" + device.getId() + ")\nModel :" + device.getModel() + ", OS: " + device.getOSType() + ", Version: " + device.getOSVersion();
 
                 System.out.println("Device in use is " + currentDevice
@@ -191,9 +193,12 @@ public class LeanFtTest extends UnitTestClassBase {
             try {
                 System.out.println("[Error] error in initApp(): " + err.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + err.getStackTrace());
             } catch (Exception ex) {
-                System.out.println("[Error] error in initApp() -> device.getLogs(): " + ex.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + ex.getStackTrace());
+                System.out.println("[Error] error in initApp(): " + ex.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + ex.getStackTrace());
                 return false;
             }
+            return false;
+        } catch (NullPointerException npEx) {
+            System.out.println("[Error] NullPointerException error in initApp() -> device.getLogs(): " + npEx.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + npEx.getStackTrace());
             return false;
         }
         return true;
@@ -216,6 +221,8 @@ public class LeanFtTest extends UnitTestClassBase {
             //description.setName("Nexus 7");
             //description.setModel("Sony");
             return MobileLab.lockDevice(description);
+            //return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
+            //return MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
             //return MobileLab.lockDeviceById("0a9e0bfe");
         } catch (GeneralLeanFtException err) {
             System.out.println("[Error] failed allocating device: " + err.getMessage());
