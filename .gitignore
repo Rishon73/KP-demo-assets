@@ -236,9 +236,18 @@ _Pvt_Extensions
 .fake/
 
 # Shahar
+#--------------
 RunResults/
 out/
 target/
 workspace.xml
 .idea/libraries/
-
+/bin
+/releases
+/maven
+/build/
+/repository/
+/.settings
+/test-output/
+/img
+/dependencies
