@@ -235,7 +235,10 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
+
+
 # Shahar
+#--------------
 RunResults/
 out/
 target/
