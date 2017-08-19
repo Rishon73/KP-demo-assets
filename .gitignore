@@ -235,15 +235,14 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
-
-
 # Shahar
 #--------------
 RunResults/
 out/
 target/
 workspace.xml
-.idea/libraries/
+**/.idea/libraries/
+**/KP-find-facility-Maven/.idea/
 /bin
 /releases
 /maven
