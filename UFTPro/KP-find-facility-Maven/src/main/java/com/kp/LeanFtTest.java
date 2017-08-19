@@ -26,7 +26,8 @@ public class LeanFtTest extends UnitTestClassBase {
     private static Application app;
     private static KPAppModel appModel;
     private static String DEVICE_LOGS_FOLDER;
-    private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
+    //private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
+    private static ApplicationDescription appDescription;
 
     public LeanFtTest() {
         //Change this constructor to private if you supply your own public constructor
@@ -51,15 +52,21 @@ public class LeanFtTest extends UnitTestClassBase {
         INSTALL_APP = true;
         HIGHLIGHT = true;
 
-        appDescription[0] = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
-        System.out.println(appDescription[0].getName());
-        //appDescription = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
+        // this code doesn't work
+        //ApplicationDescription ad = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
+//        ad.setIdentifier(APP_IDENTIFIER);
+//        ad.setPackaged(false);
+//        ad.setVersion(APP_VERSION);
+        //appDescription[0] = ad;
+//        System.out.println(appDescription[0].getName());
+
         try {
             device = initDevice();
             if (device != null) {
                 appModel = new KPAppModel(device);
 
-                //app = device.describe(Application.class, appDescription);
+                appDescription = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
+                app = device.describe(Application.class, appDescription);
                 currentDevice = "\"" + device.getName() + "\" (" + device.getId() + ")\nModel :" + device.getModel() + ", OS: " + device.getOSType() + ", Version: " + device.getOSVersion();
 
                 System.out.println("Device in use is " + currentDevice
@@ -73,7 +80,7 @@ public class LeanFtTest extends UnitTestClassBase {
                     app.restart();
 
             } else {
-                System.out.println("Device couldn't be allocated, exiting script");
+                System.out.println("======= Device couldn't be allocated, exiting script =======");
                 noProblem = false;
             }
         } catch (GeneralReplayException grex) {
@@ -90,6 +97,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Test
     public void test() throws GeneralLeanFtException {
+        if (!noProblem) return; // check if we had issues in initializing app and device
         if (!initApp()) return;
 
         try {
@@ -212,22 +220,25 @@ public class LeanFtTest extends UnitTestClassBase {
         }
     }
 
-    private Device initDevice() {
-        try {
+    private Device initDevice() throws GeneralLeanFtException {
+        //try {
             System.out.println("Init device capabilities for test...");
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
             description.setOsVersion("> 6.0");
             //description.setName("Nexus 7");
             //description.setModel("Sony");
-            return MobileLab.lockDevice(description);
+            //return MobileLab.lockDevice(description);
             //return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
             //return MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
-            //return MobileLab.lockDeviceById("0a9e0bfe");
-        } catch (GeneralLeanFtException err) {
-            System.out.println("[Error] failed allocating device: " + err.getMessage());
-            return null;
-        }
+            return MobileLab.lockDeviceById("0a9e0bfe");
+        //} catch (GeneralLeanFtException err) {
+        //    System.out.println("[Error] failed allocating device: " + err.getMessage());
+       //     return null;
+        //} catch (Exception ex) {
+        //    System.out.println("[ERROR]: General error: " + ex.getMessage());
+        //    return null;
+        //}
     }
 
     private void writeToFile(String text, String fileName) {
