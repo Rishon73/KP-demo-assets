@@ -26,8 +26,8 @@ public class LeanFtTest extends UnitTestClassBase {
     private static Application app;
     private static KPAppModel appModel;
     private static String DEVICE_LOGS_FOLDER;
-    //private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
-    private static ApplicationDescription appDescription;
+    private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
+    //private static ApplicationDescription appDescription;
 
     public LeanFtTest() {
         //Change this constructor to private if you supply your own public constructor
@@ -52,26 +52,28 @@ public class LeanFtTest extends UnitTestClassBase {
         INSTALL_APP = true;
         HIGHLIGHT = true;
 
-        // this code doesn't work
         //ApplicationDescription ad = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
-//        ad.setIdentifier(APP_IDENTIFIER);
-//        ad.setPackaged(false);
-//        ad.setVersion(APP_VERSION);
-        //appDescription[0] = ad;
-//        System.out.println(appDescription[0].getName());
+
+        // this code doesn't work
+        ApplicationDescription ad = new ApplicationDescription();
+        ad.setIdentifier(APP_IDENTIFIER);
+        ad.setPackaged(false);
+        ad.setVersion(APP_VERSION);
+        appDescription[0] = ad;
 
         try {
             device = initDevice();
             if (device != null) {
                 appModel = new KPAppModel(device);
 
-                appDescription = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
-                app = device.describe(Application.class, appDescription);
+                //appDescription = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
                 currentDevice = "\"" + device.getName() + "\" (" + device.getId() + ")\nModel :" + device.getModel() + ", OS: " + device.getOSType() + ", Version: " + device.getOSVersion();
+                System.out.println("=== " + currentDevice + " ===");
+                //app = device.describe(Application.class, appDescription);
 
-                System.out.println("Device in use is " + currentDevice
-                        + "\nApp in use: \"" + app.getName() + "\", v" + app.getVersion() + "\n***************************\n"
-                );
+//                System.out.println("Device in use is " + currentDevice
+//                        + "\nApp in use: \"" + app.getName() + "\", v" + app.getVersion() + "\n***************************\n"
+//                );
 
                 if (INSTALL_APP) {
                     System.out.println("Installing app: " + app.getName());
@@ -194,9 +196,6 @@ public class LeanFtTest extends UnitTestClassBase {
             appModel.KPApplication().SignInButton().tap();
             appModel.KPApplication().InvalidLoginOKButton().tap();
 
-            //app.describe(Button.class, new ButtonDescription.Builder().text("Sign In").className("Button").resourceId("org.kp.m:id/sign_in_button").mobileCenterIndex(0).build()).tap();
-            //app.describe(Button.class, new ButtonDescription.Builder().text("OK").className("Button").resourceId("android:id/button1").mobileCenterIndex(0).build()).tap();
-
         } catch (GeneralLeanFtException err) {
             try {
                 System.out.println("[Error] error in initApp(): " + err.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + err.getStackTrace());
@@ -221,24 +220,24 @@ public class LeanFtTest extends UnitTestClassBase {
     }
 
     private Device initDevice() throws GeneralLeanFtException {
-        //try {
+        try {
             System.out.println("Init device capabilities for test...");
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
-            description.setOsVersion("> 6.0");
+            //description.setOsVersion("> 6.0");
             //description.setName("Nexus 7");
             //description.setModel("Sony");
             //return MobileLab.lockDevice(description);
-            //return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
+            return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
             //return MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
-            return MobileLab.lockDeviceById("0a9e0bfe");
-        //} catch (GeneralLeanFtException err) {
-        //    System.out.println("[Error] failed allocating device: " + err.getMessage());
-       //     return null;
-        //} catch (Exception ex) {
-        //    System.out.println("[ERROR]: General error: " + ex.getMessage());
-        //    return null;
-        //}
+            //return MobileLab.lockDeviceById("0a9e0bfe");
+        } catch (GeneralLeanFtException err) {
+            System.out.println("[Error] failed allocating device: " + err.getMessage());
+            return null;
+        } catch (Exception ex) {
+            System.out.println("[ERROR]: General error: " + ex.getMessage());
+            return null;
+        }
     }
 
     private void writeToFile(String text, String fileName) {
