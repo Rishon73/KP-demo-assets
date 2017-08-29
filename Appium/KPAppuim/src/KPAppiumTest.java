@@ -17,9 +17,7 @@ public class KPAppiumTest {
     @Before
     public void setup() {
         // Global vars for setup
-        String MC_PROTOCOL = "http://";
-        String MC_SERVER_IP = "demo.mobilecenter.io";
-        String MC_PORT = ":8080";
+        String MC_SERVER = "http://demo.mobilecenter.io:8080";
         String MC_SERVER_USER = "";
         String MC_SERVER_PASSWORD = "";
         String APP_PACKAGE = "org.kp.m";
@@ -39,10 +37,10 @@ public class KPAppiumTest {
             // Set MC Server credentials (could be skipped if "Anonymous access" is enabled for Appium scripts in the Administration settings).
             capabilities.setCapability("userName", MC_SERVER_USER);
             capabilities.setCapability("password", MC_SERVER_PASSWORD);
-            System.out.println("================== " + MC_PROTOCOL + MC_SERVER_IP + MC_PORT + "/wd/hub ==================");
+            System.out.println("================== " + MC_SERVER + "/wd/hub ==================");
 
             // Create a session to the MC server
-            driver = new AndroidDriver(new URL(MC_PROTOCOL + MC_SERVER_IP + MC_PORT + "/wd/hub"), capabilities);
+            driver = new AndroidDriver(new URL(MC_SERVER + "/wd/hub"), capabilities);
             System.out.println("MC session was successfully created [Android Device]");
 
             // Create a wait object instance in order to verify expected conditions.
