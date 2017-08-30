@@ -22,7 +22,7 @@ public class LeanFtTest extends UnitTestClassBase {
     private static boolean INSTALL_APP;
     private static boolean HIGHLIGHT;
     private static Device device;
-    private static boolean noProblem;
+    private static boolean noProblem = true;
     private static Application app;
     private static KPAppModel appModel;
     private static String DEVICE_LOGS_FOLDER;
@@ -48,32 +48,33 @@ public class LeanFtTest extends UnitTestClassBase {
     public void setUp() throws Exception {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
-        DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
+        //DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
+        DEVICE_LOGS_FOLDER = "/Users/shahar/MCLogs";
         INSTALL_APP = true;
-        HIGHLIGHT = true;
+        HIGHLIGHT = false;
 
-        //ApplicationDescription ad = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
+        appDescription[0] = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
 
         // this code doesn't work
-        ApplicationDescription ad = new ApplicationDescription();
-        ad.setIdentifier(APP_IDENTIFIER);
-        ad.setPackaged(false);
-        ad.setVersion(APP_VERSION);
-        appDescription[0] = ad;
+//        appDescription[0] = new ApplicationDescription();
+//        appDescription[0].setIdentifier(APP_IDENTIFIER);
+//        appDescription[0].setPackaged(false);
+//        appDescription[0].setVersion(APP_VERSION);
 
         try {
             device = initDevice();
             if (device != null) {
+                Description desc = device.getDescription();
                 appModel = new KPAppModel(device);
 
                 //appDescription = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
                 currentDevice = "\"" + device.getName() + "\" (" + device.getId() + ")\nModel :" + device.getModel() + ", OS: " + device.getOSType() + ", Version: " + device.getOSVersion();
                 System.out.println("=== " + currentDevice + " ===");
-                //app = device.describe(Application.class, appDescription);
+                app = device.describe(Application.class, appDescription[0]);
 
-//                System.out.println("Device in use is " + currentDevice
-//                        + "\nApp in use: \"" + app.getName() + "\", v" + app.getVersion() + "\n***************************\n"
-//                );
+                System.out.println("Device in use is " + currentDevice
+                        + "\nApp in use: \"" + app.getName() + "\", v" + app.getVersion() + "\n***************************\n"
+                );
 
                 if (INSTALL_APP) {
                     System.out.println("Installing app: " + app.getName());
@@ -87,9 +88,12 @@ public class LeanFtTest extends UnitTestClassBase {
             }
         } catch (GeneralReplayException grex) {
             if (grex.getErrorCode() == 2036) {
-                System.out.println(grex.getMessage());
+                System.out.println("GeneralReplayException in setup(): " + grex.getMessage());
                 noProblem = false;
             }
+        } catch (Exception ex) {
+            System.out.println("Exception in setup(): " + ex.getMessage());
+            noProblem = false;
         }
     }
 
@@ -99,8 +103,9 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Test
     public void test() throws GeneralLeanFtException {
+        System.out.println("We're finally in test()");
         if (!noProblem) return; // check if we had issues in initializing app and device
-        if (!initApp()) return;
+        //if (!initApp()) return;
 
         try {
             // Tap "Find a Facility" button
@@ -172,14 +177,14 @@ public class LeanFtTest extends UnitTestClassBase {
             System.out.println("\n*** Test Completed Successfully ***");
 
         } catch (GeneralReplayException grex) {
-            System.out.println("///Debug: " + grex.getMessage() + "\n*Err number ==" + grex.getErrorCode() + "==///");
+            System.out.println("[Debug]: " + grex.getMessage() + "\n*Err number ==" + grex.getErrorCode() + "==\n\n");
             // Err number -110 - device connectivity issues [errors 2036, 2022]
             if (grex.getErrorCode() == -110)
-                System.out.println(grex.getMessage());
+                System.out.println("[ERROR]: error -110\n" + grex.getMessage());
             // Err number '-111' - Object identification issues
             if (grex.getErrorCode() == -111) {
                 //System.out.println("Object cannot be found. Verify that this object's properties match an object currently displayed in your application.");
-                System.out.println(grex.getMessage());
+                System.out.println("[ERROR]: error -111\n" + grex.getMessage());
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -224,11 +229,11 @@ public class LeanFtTest extends UnitTestClassBase {
             System.out.println("Init device capabilities for test...");
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
-            //description.setOsVersion("> 6.0");
+            description.setOsVersion("> 7.1");
             //description.setName("Nexus 7");
             //description.setModel("Sony");
-            //return MobileLab.lockDevice(description);
-            return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
+            return MobileLab.lockDevice(description);
+            //return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
             //return MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
             //return MobileLab.lockDeviceById("0a9e0bfe");
         } catch (GeneralLeanFtException err) {
