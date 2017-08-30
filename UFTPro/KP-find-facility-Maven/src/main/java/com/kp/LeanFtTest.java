@@ -20,6 +20,7 @@ public class LeanFtTest extends UnitTestClassBase {
     private static String APP_IDENTIFIER;
     private static String currentDevice;
     private static boolean INSTALL_APP;
+    private static boolean UNINSTALL_APP;
     private static boolean HIGHLIGHT;
     private static Device device;
     private static boolean noProblem = true;
@@ -27,7 +28,6 @@ public class LeanFtTest extends UnitTestClassBase {
     private static KPAppModel appModel;
     private static String DEVICE_LOGS_FOLDER;
     private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
-    //private static ApplicationDescription appDescription;
 
     public LeanFtTest() {
         //Change this constructor to private if you supply your own public constructor
@@ -48,12 +48,11 @@ public class LeanFtTest extends UnitTestClassBase {
     public void setUp() throws Exception {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
-        //DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
-        DEVICE_LOGS_FOLDER = "/Users/shahar/MCLogs";
+        DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
+        //DEVICE_LOGS_FOLDER = "/Users/shahar/MCLogs";
         INSTALL_APP = true;
-        HIGHLIGHT = false;
-
-        appDescription[0] = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
+        UNINSTALL_APP = false;
+        HIGHLIGHT = true;
 
         // this code doesn't work
 //        appDescription[0] = new ApplicationDescription();
@@ -67,10 +66,9 @@ public class LeanFtTest extends UnitTestClassBase {
                 Description desc = device.getDescription();
                 appModel = new KPAppModel(device);
 
-                //appDescription = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
-                currentDevice = "\"" + device.getName() + "\" (" + device.getId() + ")\nModel :" + device.getModel() + ", OS: " + device.getOSType() + ", Version: " + device.getOSVersion();
-                System.out.println("=== " + currentDevice + " ===");
+                appDescription[0] = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
                 app = device.describe(Application.class, appDescription[0]);
+                currentDevice = "\"" + device.getName() + "\" (" + device.getId() + ")\nModel :" + device.getModel() + ", OS: " + device.getOSType() + ", Version: " + device.getOSVersion();
 
                 System.out.println("Device in use is " + currentDevice
                         + "\nApp in use: \"" + app.getName() + "\", v" + app.getVersion() + "\n***************************\n"
@@ -99,13 +97,15 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @After
     public void tearDown() throws Exception {
+        if (UNINSTALL_APP)
+            app.uninstall();
     }
 
     @Test
     public void test() throws GeneralLeanFtException {
-        System.out.println("We're finally in test()");
+        System.out.println("Entering test()");
         if (!noProblem) return; // check if we had issues in initializing app and device
-        //if (!initApp()) return;
+        if (!initApp()) return;
 
         try {
             // Tap "Find a Facility" button
@@ -118,15 +118,15 @@ public class LeanFtTest extends UnitTestClassBase {
             System.out.println("Tap \"Allow\" to device's locations");
             if (INSTALL_APP) {
                 if (HIGHLIGHT)
-                    app.describe(Button.class, new ButtonDescription.Builder().text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).highlight();
-                app.describe(Button.class, new ButtonDescription.Builder().text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).tap();
+                    appModel.PackageInstallerApplication().AllowLocationsButton().highlight();
+                appModel.PackageInstallerApplication().AllowLocationsButton().tap();
             }
 
             // Tap "Close" the important alert
             System.out.println("Tap \"Close\" the important alert");
             if (HIGHLIGHT)
-                appModel.KPApplication().CloseButton().highlight();
-            appModel.KPApplication().CloseButton().tap();
+                appModel.KPApplication().CloseImportantMessageButton().highlight();
+            appModel.KPApplication().CloseImportantMessageButton().tap();
 
             // Tap magnifying glass
             System.out.println("Tap magnifying glass");
@@ -197,6 +197,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
     private boolean initApp() {
         try {
+            if (!device.getId().equals("0a9e0bfe")) return true;
             System.out.println("Init app after install steps...");
             appModel.KPApplication().SignInButton().tap();
             appModel.KPApplication().InvalidLoginOKButton().tap();
@@ -229,12 +230,12 @@ public class LeanFtTest extends UnitTestClassBase {
             System.out.println("Init device capabilities for test...");
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
-            description.setOsVersion("> 7.1");
+            description.setOsVersion(">= 6.0.1");
             //description.setName("Nexus 7");
             //description.setModel("Sony");
-            return MobileLab.lockDevice(description);
+            //return MobileLab.lockDevice(description);
             //return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
-            //return MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
+            return MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
             //return MobileLab.lockDeviceById("0a9e0bfe");
         } catch (GeneralLeanFtException err) {
             System.out.println("[Error] failed allocating device: " + err.getMessage());
