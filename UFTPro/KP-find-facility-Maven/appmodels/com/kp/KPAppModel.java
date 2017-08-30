@@ -37,15 +37,16 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 			private SignInButton SignInButton;
 	private InvalidLoginOKButton InvalidLoginOKButton;
 	private FindAFacilityLabel FindAFacilityLabel;
-	private CloseButton CloseButton;
+	private CloseImportantMessageButton CloseImportantMessageButton;
 	private SearchIconLabel SearchIconLabel;
 	private SearchAddressEditField SearchAddressEditField;
 	private FilterLabel FilterLabel;
 	private EmergencyServicesLabel EmergencyServicesLabel;
 	private FiltersOKButton FiltersOKButton;
 	private ListToggle ListToggle;
-	private PackageInstallerApplication PackageInstallerApplication;
 	private LosAngelesMedicalCentLabel LosAngelesMedicalCentLabel;
+	private OrgKpMIdButtonPanelUiObject OrgKpMIdButtonPanelUiObject;
+	private FindAFacilityLabel_old FindAFacilityLabel_old;
 						public KPApplication(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
 		{
 			super(parent, applicationModel);
@@ -53,15 +54,16 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 					SignInButton = new SignInButton(this, applicationModel);
 		InvalidLoginOKButton = new InvalidLoginOKButton(this, applicationModel);
 		FindAFacilityLabel = new FindAFacilityLabel(this, applicationModel);
-		CloseButton = new CloseButton(this, applicationModel);
+		CloseImportantMessageButton = new CloseImportantMessageButton(this, applicationModel);
 		SearchIconLabel = new SearchIconLabel(this, applicationModel);
 		SearchAddressEditField = new SearchAddressEditField(this, applicationModel);
 		FilterLabel = new FilterLabel(this, applicationModel);
 		EmergencyServicesLabel = new EmergencyServicesLabel(this, applicationModel);
 		FiltersOKButton = new FiltersOKButton(this, applicationModel);
 		ListToggle = new ListToggle(this, applicationModel);
-		PackageInstallerApplication = new PackageInstallerApplication(this, applicationModel);
 		LosAngelesMedicalCentLabel = new LosAngelesMedicalCentLabel(this, applicationModel);
+		OrgKpMIdButtonPanelUiObject = new OrgKpMIdButtonPanelUiObject(this, applicationModel);
+		FindAFacilityLabel_old = new FindAFacilityLabel_old(this, applicationModel);
 
 			setDisplayName("KP");
 		}
@@ -80,15 +82,16 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 				public SignInButton SignInButton() { return SignInButton; }
 		public InvalidLoginOKButton InvalidLoginOKButton() { return InvalidLoginOKButton; }
 		public FindAFacilityLabel FindAFacilityLabel() { return FindAFacilityLabel; }
-		public CloseButton CloseButton() { return CloseButton; }
+		public CloseImportantMessageButton CloseImportantMessageButton() { return CloseImportantMessageButton; }
 		public SearchIconLabel SearchIconLabel() { return SearchIconLabel; }
 		public SearchAddressEditField SearchAddressEditField() { return SearchAddressEditField; }
 		public FilterLabel FilterLabel() { return FilterLabel; }
 		public EmergencyServicesLabel EmergencyServicesLabel() { return EmergencyServicesLabel; }
 		public FiltersOKButton FiltersOKButton() { return FiltersOKButton; }
 		public ListToggle ListToggle() { return ListToggle; }
-		public PackageInstallerApplication PackageInstallerApplication() { return PackageInstallerApplication; }
 		public LosAngelesMedicalCentLabel LosAngelesMedicalCentLabel() { return LosAngelesMedicalCentLabel; }
+		public OrgKpMIdButtonPanelUiObject OrgKpMIdButtonPanelUiObject() { return OrgKpMIdButtonPanelUiObject; }
+		public FindAFacilityLabel_old FindAFacilityLabel_old() { return FindAFacilityLabel_old; }
 		
 			public class SignInButton extends ButtonNodeBase
 	{
@@ -168,23 +171,23 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 				
 			}
 
-	public class CloseButton extends ButtonNodeBase
+	public class CloseImportantMessageButton extends ButtonNodeBase
 	{
 
 		
-								public CloseButton(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
+								public CloseImportantMessageButton(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
 		{
 			super(parent, applicationModel);
 
 			
-			setDisplayName("Close");
+			setDisplayName("CloseImportantMessage");
 		}
 
 		@Override
 		protected com.hp.lft.sdk.mobile.ButtonDescription createDescription() throws GeneralLeanFtException{
 			com.hp.lft.sdk.mobile.ButtonDescription description = null; 
 			try{
-				description = new com.hp.lft.sdk.mobile.ButtonDescription.Builder().text("Close").className("Button").resourceId("android:id/button2").mobileCenterIndex(0).build();
+				description = new com.hp.lft.sdk.mobile.ButtonDescription.Builder().className("Button").resourceId("android:id/button2").mobileCenterIndex(0).text(new RegExpProperty("C.*")).build();
 			}catch(Exception e){
 				throw new GeneralLeanFtException(e.getMessage(), e);
 			}
@@ -350,90 +353,6 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 				
 			}
 
-	public class PackageInstallerApplication extends ApplicationNodeBase
-	{
-
-		
-			private AccessContactsAllowButton AccessContactsAllowButton;
-	private AccessLocationAllowButton AccessLocationAllowButton;
-						public PackageInstallerApplication(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
-		{
-			super(parent, applicationModel);
-
-					AccessContactsAllowButton = new AccessContactsAllowButton(this, applicationModel);
-		AccessLocationAllowButton = new AccessLocationAllowButton(this, applicationModel);
-
-			setDisplayName("Package installer");
-		}
-
-		@Override
-		protected com.hp.lft.sdk.mobile.ApplicationDescription createDescription() throws GeneralLeanFtException{
-			com.hp.lft.sdk.mobile.ApplicationDescription description = null; 
-			try{
-				description = new com.hp.lft.sdk.mobile.ApplicationDescription.Builder().identifier("com.google.android.packageinstaller").packaged(false).build();
-			}catch(Exception e){
-				throw new GeneralLeanFtException(e.getMessage(), e);
-			}
-			return description;
-		}
-
-				public AccessContactsAllowButton AccessContactsAllowButton() { return AccessContactsAllowButton; }
-		public AccessLocationAllowButton AccessLocationAllowButton() { return AccessLocationAllowButton; }
-		
-			public class AccessContactsAllowButton extends ButtonNodeBase
-	{
-
-		
-								public AccessContactsAllowButton(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
-		{
-			super(parent, applicationModel);
-
-			
-			setDisplayName("AllowAccessContacts");
-		}
-
-		@Override
-		protected com.hp.lft.sdk.mobile.ButtonDescription createDescription() throws GeneralLeanFtException{
-			com.hp.lft.sdk.mobile.ButtonDescription description = null; 
-			try{
-				description = new com.hp.lft.sdk.mobile.ButtonDescription.Builder().text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build();
-			}catch(Exception e){
-				throw new GeneralLeanFtException(e.getMessage(), e);
-			}
-			return description;
-		}
-
-				
-			}
-
-	public class AccessLocationAllowButton extends ButtonNodeBase
-	{
-
-		
-								public AccessLocationAllowButton(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
-		{
-			super(parent, applicationModel);
-
-			
-			setDisplayName("AllowAccessLocation");
-		}
-
-		@Override
-		protected com.hp.lft.sdk.mobile.ButtonDescription createDescription() throws GeneralLeanFtException{
-			com.hp.lft.sdk.mobile.ButtonDescription description = null; 
-			try{
-				description = new com.hp.lft.sdk.mobile.ButtonDescription.Builder().text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build();
-			}catch(Exception e){
-				throw new GeneralLeanFtException(e.getMessage(), e);
-			}
-			return description;
-		}
-
-				
-			}
-
-	}
-
 	public class LosAngelesMedicalCentLabel extends LabelNodeBase
 	{
 
@@ -460,17 +379,73 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 				
 			}
 
+	public class OrgKpMIdButtonPanelUiObject extends UiObjectNodeBase
+	{
+
+		
+								public OrgKpMIdButtonPanelUiObject(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
+		{
+			super(parent, applicationModel);
+
+			
+			setDisplayName("org.kp.m:id/buttonPanel");
+		}
+
+		@Override
+		protected com.hp.lft.sdk.mobile.UiObjectDescription createDescription() throws GeneralLeanFtException{
+			com.hp.lft.sdk.mobile.UiObjectDescription description = null; 
+			try{
+				description = new com.hp.lft.sdk.mobile.UiObjectDescription.Builder().className("View").resourceId("org.kp.m:id/buttonPanel").mobileCenterIndex(10).build();
+			}catch(Exception e){
+				throw new GeneralLeanFtException(e.getMessage(), e);
+			}
+			return description;
+		}
+
+				
+			}
+
+	public class FindAFacilityLabel_old extends LabelNodeBase
+	{
+
+		
+								public FindAFacilityLabel_old(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
+		{
+			super(parent, applicationModel);
+
+			
+			setDisplayName("Find a Facility-old");
+		}
+
+		@Override
+		protected com.hp.lft.sdk.mobile.LabelDescription createDescription() throws GeneralLeanFtException{
+			com.hp.lft.sdk.mobile.LabelDescription description = null; 
+			try{
+				description = new com.hp.lft.sdk.mobile.LabelDescription.Builder().text("Find a Facility2").className("Label").resourceId("org.kp.m:id/sign_in_facility_locator").mobileCenterIndex(8).build();
+			}catch(Exception e){
+				throw new GeneralLeanFtException(e.getMessage(), e);
+			}
+			return description;
+		}
+
+				
+			}
+
 	}
 
 	public class PackageInstallerApplication extends ApplicationNodeBase
 	{
 
 		
-								public PackageInstallerApplication(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
+			private AllowLocationsButton AllowLocationsButton;
+	private AllowContactsButton AllowContactsButton;
+						public PackageInstallerApplication(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
 		{
 			super(parent, applicationModel);
 
-			
+					AllowLocationsButton = new AllowLocationsButton(this, applicationModel);
+		AllowContactsButton = new AllowContactsButton(this, applicationModel);
+
 			setDisplayName("Package installer");
 		}
 
@@ -485,8 +460,62 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 			return description;
 		}
 
+				public AllowLocationsButton AllowLocationsButton() { return AllowLocationsButton; }
+		public AllowContactsButton AllowContactsButton() { return AllowContactsButton; }
+		
+			public class AllowLocationsButton extends ButtonNodeBase
+	{
+
+		
+								public AllowLocationsButton(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
+		{
+			super(parent, applicationModel);
+
+			
+			setDisplayName("AllowLocations");
+		}
+
+		@Override
+		protected com.hp.lft.sdk.mobile.ButtonDescription createDescription() throws GeneralLeanFtException{
+			com.hp.lft.sdk.mobile.ButtonDescription description = null; 
+			try{
+				description = new com.hp.lft.sdk.mobile.ButtonDescription.Builder().text(new RegExpProperty("(?i)ALLOW")).className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build();
+			}catch(Exception e){
+				throw new GeneralLeanFtException(e.getMessage(), e);
+			}
+			return description;
+		}
+
 				
 			}
+
+	public class AllowContactsButton extends ButtonNodeBase
+	{
+
+		
+								public AllowContactsButton(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
+		{
+			super(parent, applicationModel);
+
+			
+			setDisplayName("AllowContacts");
+		}
+
+		@Override
+		protected com.hp.lft.sdk.mobile.ButtonDescription createDescription() throws GeneralLeanFtException{
+			com.hp.lft.sdk.mobile.ButtonDescription description = null; 
+			try{
+				description = new com.hp.lft.sdk.mobile.ButtonDescription.Builder().text(new RegExpProperty("(?i)ALLOW")).className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build();
+			}catch(Exception e){
+				throw new GeneralLeanFtException(e.getMessage(), e);
+			}
+			return description;
+		}
+
+				
+			}
+
+	}
 
 
 			
@@ -1736,6 +1765,287 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 		public void setDisplayName(java.lang.String arg0)  
 		{
 			getConcrete().setDisplayName(arg0);
+		}
+
+		@Override 
+		public void swipe(com.hp.lft.sdk.SwipeDirection arg0) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().swipe(arg0);
+		}
+
+		@Override 
+		public void swipe(com.hp.lft.sdk.SwipeDirection arg0, com.hp.lft.sdk.mobile.SwipeArgs arg1) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().swipe(arg0, arg1);
+		}
+
+		@Override 
+		public void tap() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().tap();
+		}
+
+		@Override 
+		public void tap(com.hp.lft.sdk.mobile.TapArgs arg0) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().tap(arg0);
+		}
+
+		@Override 
+		public java.awt.Point verifyImageExists(java.awt.image.RenderedImage arg0) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().verifyImageExists(arg0);
+		}
+
+		@Override 
+		public java.awt.Point verifyImageExists(java.awt.image.RenderedImage arg0, byte arg1) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().verifyImageExists(arg0, arg1);
+		}
+
+		@Override 
+		public boolean verifyImageMatch(java.awt.image.RenderedImage arg0) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().verifyImageMatch(arg0);
+		}
+
+		@Override 
+		public boolean verifyImageMatch(java.awt.image.RenderedImage arg0, byte arg1) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().verifyImageMatch(arg0, arg1);
+		}
+
+		@Override 
+		public boolean verifyImageMatch(java.awt.image.RenderedImage arg0, com.hp.lft.sdk.ImageMaskArea arg1) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().verifyImageMatch(arg0, arg1);
+		}
+
+		@Override 
+		public boolean verifyImageMatch(java.awt.image.RenderedImage arg0, byte arg1, byte arg2) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().verifyImageMatch(arg0, arg1, arg2);
+		}
+
+		@Override 
+		public boolean verifyImageMatch(java.awt.image.RenderedImage arg0, com.hp.lft.sdk.ImageMaskArea arg1, byte arg2) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().verifyImageMatch(arg0, arg1, arg2);
+		}
+
+		@Override 
+		public boolean verifyImageMatch(java.awt.image.RenderedImage arg0, com.hp.lft.sdk.ImageMaskArea arg1, byte arg2, byte arg3) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().verifyImageMatch(arg0, arg1, arg2, arg3);
+		}
+	}
+	
+	public abstract class UiObjectNodeBase extends AppModelNodeBase<com.hp.lft.sdk.mobile.UiObject, com.hp.lft.sdk.mobile.UiObjectDescription> implements com.hp.lft.sdk.mobile.UiObject
+	{		
+		public UiObjectNodeBase(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
+		{
+			super(parent, applicationModel);
+		}
+
+		
+
+
+		@Override 
+		public <TChild extends TestObject> TChild describe(java.lang.Class<TChild> arg0, com.hp.lft.sdk.Description arg1) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().describe(arg0, arg1);
+		}
+
+		@Override 
+		public boolean exists() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().exists();
+		}
+
+		@Override 
+		public boolean exists(java.lang.Integer arg0) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().exists(arg0);
+		}
+
+		@Override 
+		public <TChild extends TestObject> TChild[] findChildren(java.lang.Class<TChild> arg0, com.hp.lft.sdk.Description arg1) throws com.hp.lft.sdk.GeneralLeanFtException, java.lang.CloneNotSupportedException 
+		{
+			return getConcrete().findChildren(arg0, arg1);
+		}
+
+		@Override 
+		public java.lang.String getAccessibilityId() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getAccessibilityId();
+		}
+
+		@Override 
+		public java.lang.String getClassName() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getClassName();
+		}
+
+		@Override 
+		public java.lang.String getContainer() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getContainer();
+		}
+
+		@Override 
+		public java.lang.String getDisplayName()  
+		{
+			return getConcrete().getDisplayName();
+		}
+
+		@Override 
+		public java.awt.Point getLocation() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getLocation();
+		}
+
+		@Override 
+		public java.lang.String getResourceId() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getResourceId();
+		}
+
+		@Override 
+		public java.awt.Dimension getSize() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getSize();
+		}
+
+		@Override 
+		public java.awt.image.RenderedImage getSnapshot() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getSnapshot();
+		}
+
+		@Override 
+		public java.awt.Rectangle[] getTextLocations(java.lang.String arg0) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getTextLocations(arg0);
+		}
+
+		@Override 
+		public java.awt.Rectangle[] getTextLocations(java.lang.String arg0, java.awt.Rectangle arg1) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getTextLocations(arg0, arg1);
+		}
+
+		@Override 
+		public java.lang.String getVisibleText() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getVisibleText();
+		}
+
+		@Override 
+		public java.lang.String getVisibleText(java.awt.Rectangle arg0) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().getVisibleText(arg0);
+		}
+
+		@Override 
+		public void highlight() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().highlight();
+		}
+
+		@Override 
+		public <TChild extends TestObject> int highlightMatches(java.lang.Class<TChild> arg0, com.hp.lft.sdk.Description arg1) throws com.hp.lft.sdk.GeneralLeanFtException, java.lang.CloneNotSupportedException 
+		{
+			return getConcrete().highlightMatches(arg0, arg1);
+		}
+
+		@Override 
+		public boolean isCheckable() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().isCheckable();
+		}
+
+		@Override 
+		public boolean isChecked() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().isChecked();
+		}
+
+		@Override 
+		public boolean isClickable() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().isClickable();
+		}
+
+		@Override 
+		public boolean isEnabled() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().isEnabled();
+		}
+
+		@Override 
+		public boolean isFocusable() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().isFocusable();
+		}
+
+		@Override 
+		public boolean isFocused() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			return getConcrete().isFocused();
+		}
+
+		@Override 
+		public void longPress() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().longPress();
+		}
+
+		@Override 
+		public void longPress(com.hp.lft.sdk.mobile.LongPressArgs arg0) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().longPress(arg0);
+		}
+
+		@Override 
+		public void pan(com.hp.lft.sdk.Location arg0, com.hp.lft.sdk.Location arg1) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().pan(arg0, arg1);
+		}
+
+		@Override 
+		public void pan(java.awt.Point arg0, java.awt.Point arg1) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().pan(arg0, arg1);
+		}
+
+		@Override 
+		public void pan(java.awt.Point arg0, java.awt.Point arg1, com.hp.lft.sdk.mobile.PanArgs arg2) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().pan(arg0, arg1, arg2);
+		}
+
+		@Override 
+		public void pinch(double arg0) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().pinch(arg0);
+		}
+
+		@Override 
+		public void pinch(double arg0, com.hp.lft.sdk.mobile.PinchArgs arg1) throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().pinch(arg0, arg1);
+		}
+
+		@Override 
+		public void setDisplayName(java.lang.String arg0)  
+		{
+			getConcrete().setDisplayName(arg0);
+		}
+
+		@Override 
+		public void setFocus() throws com.hp.lft.sdk.GeneralLeanFtException 
+		{
+			getConcrete().setFocus();
 		}
 
 		@Override 
