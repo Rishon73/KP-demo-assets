@@ -86,7 +86,8 @@ public class LeanFtTest extends UnitTestClassBase {
                 if (INSTALL_APP) {
                     System.out.println("Installing app: " + app.getIdentifier());
                     System.out.println("Version: " + APP_VERSION);
-                    app.install();
+                    //app.install();
+                    app.launch();
                 } else {
                     app.restart();
                 }
