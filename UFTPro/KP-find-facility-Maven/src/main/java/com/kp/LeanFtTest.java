@@ -2,6 +2,7 @@ package com.kp;
 
 import com.hp.lft.sdk.mobile.Button;
 import com.hp.lft.sdk.mobile.Label;
+import com.sun.xml.internal.ws.handler.ServerLogicalHandlerTube;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,7 +14,6 @@ import com.hp.lft.report.*;
 import unittesting.*;
 import java.awt.*;
 import java.io.*;
-import java.sql.Time;
 
 public class LeanFtTest extends UnitTestClassBase {
     private static String APP_VERSION;
@@ -28,6 +28,7 @@ public class LeanFtTest extends UnitTestClassBase {
     private static KPAppModel appModel;
     private static String DEVICE_LOGS_FOLDER;
     private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
+    private enum LOG_LEVEL {INFO, ERROR};
 
     public LeanFtTest() {
         //Change this constructor to private if you supply your own public constructor
@@ -48,17 +49,12 @@ public class LeanFtTest extends UnitTestClassBase {
     public void setUp() throws Exception {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
-        DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
-        //DEVICE_LOGS_FOLDER = "/Users/shahar/MCLogs";
+        //DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
+        DEVICE_LOGS_FOLDER = "/Users/shahar/MCDeviceLogs/";
         INSTALL_APP = true;
         UNINSTALL_APP = false;
         HIGHLIGHT = true;
-
-        // this code doesn't work
-//        appDescription[0] = new ApplicationDescription();
-//        appDescription[0].setIdentifier(APP_IDENTIFIER);
-//        appDescription[0].setPackaged(false);
-//        appDescription[0].setVersion(APP_VERSION);
+        logMessages("Enter setUp()", LOG_LEVEL.INFO);
 
         try {
             device = initDevice();
@@ -68,31 +64,30 @@ public class LeanFtTest extends UnitTestClassBase {
 
                 appDescription[0] = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
                 app = device.describe(Application.class, appDescription[0]);
-                currentDevice = "\"" + device.getName() + "\" (" + device.getId() + ")\nModel :" + device.getModel() + ", OS: " + device.getOSType() + ", Version: " + device.getOSVersion();
+                currentDevice = "\"" + device.getName() + "\" (" + device.getId() + "), Model :" + device.getModel() + ", OS: " + device.getOSType() + " version: " + device.getOSVersion();
 
-                System.out.println("Device in use is " + currentDevice
-                        + "\nApp in use: \"" + app.getName() + "\", v" + app.getVersion() + "\n***************************\n"
-                );
+                logMessages("Allocated device: " + currentDevice + ". App in use: \"" + app.getName() + "\" v" + app.getVersion(), LOG_LEVEL.INFO);
 
                 if (INSTALL_APP) {
-                    System.out.println("Installing app: " + app.getName());
+                    logMessages("Installing app:" + app.getName(), LOG_LEVEL.INFO);
                     app.install();
                 } else
                     app.restart();
 
             } else {
-                System.out.println("======= Device couldn't be allocated, exiting script =======");
+                logMessages("Device couldn't be allocated, exiting script", LOG_LEVEL.ERROR);
                 noProblem = false;
             }
         } catch (GeneralReplayException grex) {
             if (grex.getErrorCode() == 2036) {
-                System.out.println("GeneralReplayException in setup(): " + grex.getMessage());
+                logMessages("GeneralReplayException in setup(): " + grex.getMessage(), LOG_LEVEL.ERROR);
                 noProblem = false;
             }
         } catch (Exception ex) {
-            System.out.println("Exception in setup(): " + ex.getMessage());
+            logMessages("Exception in setup(): " + ex.getMessage(), LOG_LEVEL.ERROR);
             noProblem = false;
         }
+        logMessages("Exit setUp()", LOG_LEVEL.INFO);
     }
 
     @After
@@ -103,19 +98,19 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Test
     public void test() throws GeneralLeanFtException {
-        System.out.println("Entering test()");
         if (!noProblem) return; // check if we had issues in initializing app and device
         if (!initApp()) return;
+        logMessages("Entering test()", LOG_LEVEL.INFO);
 
         try {
             // Tap "Find a Facility" button
-            System.out.println("Tap \"Find a Facility\" button");
+            logMessages("Tap \"Find a Facility\" button", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
                 appModel.KPApplication().FindAFacilityLabel().highlight();
             appModel.KPApplication().FindAFacilityLabel().tap();
 
             // Tap "Allow" to device's locations
-            System.out.println("Tap \"Allow\" to device's locations");
+            logMessages("Tap \"Allow\" to device's locations", LOG_LEVEL.INFO);
             if (INSTALL_APP) {
                 if (HIGHLIGHT)
                     appModel.PackageInstallerApplication().AllowLocationsButton().highlight();
@@ -123,97 +118,100 @@ public class LeanFtTest extends UnitTestClassBase {
             }
 
             // Tap "Close" the important alert
-            System.out.println("Tap \"Close\" the important alert");
+            logMessages("Tap \"Close\" the important alert", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
                 appModel.KPApplication().CloseImportantMessageButton().highlight();
             appModel.KPApplication().CloseImportantMessageButton().tap();
 
             // Tap magnifying glass
-            System.out.println("Tap magnifying glass");
+            logMessages("Tap magnifying glass", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
                 appModel.KPApplication().SearchIconLabel().highlight();
             appModel.KPApplication().SearchIconLabel().tap();
 
-            appModel.KPApplication().SearchAddressEditField().highlight();
+            logMessages("Type zip code in search field", LOG_LEVEL.INFO);
             appModel.KPApplication().SearchAddressEditField().setText("90210");
 
-            System.out.println("Click Search...");
+            logMessages("Click Search...", LOG_LEVEL.INFO);
             TapArgs args = new TapArgs();
-            Point offset = new Point(1150, 1280);
-            args.setLocation(new Location(Position.TOP_LEFT, offset));
+            args.setLocation(new Location(Position.TOP_LEFT, getTapOffsets(0)));
             app.describe(UiObject.class, new UiObjectDescription.Builder().accessibilityId("Google Map").className("View").mobileCenterIndex(19).build()).tap(args);
 
-            System.out.println("Open filters");
+            logMessages("Open filters", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
                 appModel.KPApplication().FilterLabel().highlight();
             appModel.KPApplication().FilterLabel().tap();
 
-            System.out.println("select 'Emergency Services'");
+            logMessages("select 'Emergency Services'", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
                 appModel.KPApplication().EmergencyServicesLabel().highlight();
             appModel.KPApplication().EmergencyServicesLabel().tap();
 
-            System.out.println("Click OK");
+            logMessages("Click OK", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
                 appModel.KPApplication().FiltersOKButton().highlight();
             appModel.KPApplication().FiltersOKButton().tap();
 
-            System.out.println("Show list mode");
+            logMessages("Show list mode", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
                 appModel.KPApplication().ListToggle().highlight();
             appModel.KPApplication().ListToggle().tap();
 
-            System.out.println("Select 'Antioch Medical Center' facility");
+            logMessages("Select 'Antioch Medical Center' facility", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
                 appModel.KPApplication().LosAngelesMedicalCentLabel().highlight();
             appModel.KPApplication().LosAngelesMedicalCentLabel().tap();
 
             if (INSTALL_APP) {
-                System.out.println("Allow...");
+                logMessages("Allow...", LOG_LEVEL.INFO);
                 if (HIGHLIGHT)
                     app.describe(Button.class, new ButtonDescription.Builder().text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).highlight();
                 app.describe(Button.class, new ButtonDescription.Builder().text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).tap();
             }
-            System.out.println("\n*** Test Completed Successfully ***");
+            logMessages("\n*** Test Completed Successfully ***\n", LOG_LEVEL.INFO);
 
         } catch (GeneralReplayException grex) {
-            System.out.println("[Debug]: " + grex.getMessage() + "\n*Err number ==" + grex.getErrorCode() + "==\n\n");
             // Err number -110 - device connectivity issues [errors 2036, 2022]
             if (grex.getErrorCode() == -110)
-                System.out.println("[ERROR]: error -110\n" + grex.getMessage());
+                logMessages("error -110 (device connectivity issues)\n" + grex.getMessage(), LOG_LEVEL.ERROR);
             // Err number '-111' - Object identification issues
             if (grex.getErrorCode() == -111) {
-                //System.out.println("Object cannot be found. Verify that this object's properties match an object currently displayed in your application.");
-                System.out.println("[ERROR]: error -111\n" + grex.getMessage());
+                // Object cannot be found. Verify that this object's properties match an object currently displayed in your application.
+                logMessages("error -111 (object identification issue)\n" + grex.getMessage(), LOG_LEVEL.ERROR);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            logMessages(ex.getMessage(), LOG_LEVEL.ERROR);
         } finally {
-            System.out.println("In test() -> finally statement");
-            String timeStamp = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new java.util.Date());
-            writeToFile(device.getLogs(), DEVICE_LOGS_FOLDER + "DeviceLog_" + device.getId() + "_" + timeStamp + ".txt");
+            try {
+                logMessages("In test() -> finally statement", LOG_LEVEL.INFO);
+                writeToFile(device.getLogs(), DEVICE_LOGS_FOLDER + "DeviceLog_" + device.getId() + "_" + getTimeStamp("yyyyMMdd_HHmmss") + ".log");
+                logMessages("Exit test()", LOG_LEVEL.INFO);
+            } catch (Exception exx) {
+                logMessages(exx.getMessage(), LOG_LEVEL.ERROR);
+            }
         }
     }
 
     private boolean initApp() {
         try {
             if (!device.getId().equals("0a9e0bfe")) return true;
-            System.out.println("Init app after install steps...");
+            logMessages("Enter initApp (Init app after install steps)", LOG_LEVEL.INFO);
             appModel.KPApplication().SignInButton().tap();
             appModel.KPApplication().InvalidLoginOKButton().tap();
 
         } catch (GeneralLeanFtException err) {
             try {
-                System.out.println("[Error] error in initApp(): " + err.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + err.getStackTrace());
+                logMessages("error in initApp(): " + err.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + err.getStackTrace(), LOG_LEVEL.ERROR);
             } catch (Exception ex) {
-                System.out.println("[Error] error in initApp(): " + ex.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + ex.getStackTrace());
+                logMessages("error in initApp(): " + ex.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + ex.getStackTrace(), LOG_LEVEL.ERROR);
                 return false;
             }
             return false;
         } catch (NullPointerException npEx) {
-            System.out.println("[Error] NullPointerException error in initApp() -> device.getLogs(): " + npEx.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + npEx.getStackTrace());
+            logMessages("NullPointerException error in initApp() -> device.getLogs(): " + npEx.getMessage() + "\nDevice is: " + currentDevice + "\nStack:\n" + npEx.getStackTrace(), LOG_LEVEL.ERROR);
             return false;
         }
+        logMessages("Exit initApp", LOG_LEVEL.INFO);
         return true;
     }
 
@@ -221,42 +219,62 @@ public class LeanFtTest extends UnitTestClassBase {
         try {
             Thread.sleep(milliseconds);
         } catch (InterruptedException err){
-            System.out.println("[Error] error in windowSync(int duration): " + err.getMessage() + "\nDevice is: " + currentDevice);
+            logMessages("[error in windowSync(int duration): " + err.getMessage() + "\nDevice is: " + currentDevice, LOG_LEVEL.ERROR);
         }
     }
 
     private Device initDevice() throws GeneralLeanFtException {
+        Device retDevice = null;
         try {
-            System.out.println("Init device capabilities for test...");
+            logMessages("Init device capabilities", LOG_LEVEL.INFO);
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
             description.setOsVersion(">= 6.0.1");
-            //description.setName("Nexus 7");
+            description.setName("Nexus 7");
             //description.setModel("Sony");
-            //return MobileLab.lockDevice(description);
-            //return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
-            return MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
-            //return MobileLab.lockDeviceById("0a9e0bfe");
+            //retDevice =  MobileLab.lockDevice(description);
+            retDevice =  MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
+            //retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
+            //retDevice =  MobileLab.lockDeviceById("0a9e0bfe");
         } catch (GeneralLeanFtException err) {
-            System.out.println("[Error] failed allocating device: " + err.getMessage());
-            return null;
+            logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
         } catch (Exception ex) {
-            System.out.println("[ERROR]: General error: " + ex.getMessage());
-            return null;
+            logMessages("General error: " + ex.getMessage(), LOG_LEVEL.ERROR);
+        } finally {
+            logMessages("Exit initDevice()", LOG_LEVEL.INFO);
         }
+        return retDevice;
     }
 
+
     private void writeToFile(String text, String fileName) {
-        System.out.println("test length:" + text.length() + "\nFile name: " + fileName);
+        logMessages("In writeToFile() -> File length:" + text.length() + " File name: " + fileName, LOG_LEVEL.INFO);
         PrintWriter writer = null;
         try {
             File logFile = new File(fileName);
             writer = new java.io.PrintWriter(logFile);
             writer.println(text);
         } catch (FileNotFoundException fnfEx) {
-            System.out.println(fnfEx.getMessage());
+            logMessages(fnfEx.getMessage(), LOG_LEVEL.ERROR);
         } finally {
             if (writer != null) writer.close();
         }
+    }
+
+    private Point getTapOffsets(int number) {
+        Point offsets[] = new Point[2];
+        offsets[0] = new Point(1150, 1280); // Nexus 7
+        offsets[1] = new Point(998, 1720);  // Pixel
+
+        return offsets[number];
+    }
+
+    private String getTimeStamp(String pattern) {
+        return new java.text.SimpleDateFormat(pattern).format(new java.util.Date());
+    }
+
+    private void logMessages(String message, LOG_LEVEL level) {
+        String prefix = (level==LOG_LEVEL.INFO) ? "[I] " : "[E] ";
+        System.out.println(">>> " + prefix + " [" + getTimeStamp("dd/MM/yyyy HH:mm:ss") + "] " + message + "<<<");
     }
 }
