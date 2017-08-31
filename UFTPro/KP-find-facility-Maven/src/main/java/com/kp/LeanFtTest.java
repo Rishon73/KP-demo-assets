@@ -230,7 +230,7 @@ public class LeanFtTest extends UnitTestClassBase {
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
             description.setOsVersion(">= 6.0.1");
-            //description.setName("Nexus 7");
+            description.setName("Nexus 7");
             //description.setModel("Sony");
             //retDevice =  MobileLab.lockDevice(description);
             retDevice =  MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
