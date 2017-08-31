@@ -1,8 +1,5 @@
 package com.kp;
 
-import com.hp.lft.sdk.mobile.Button;
-import com.hp.lft.sdk.mobile.Label;
-import com.sun.xml.internal.ws.handler.ServerLogicalHandlerTube;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
