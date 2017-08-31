@@ -49,8 +49,8 @@ public class LeanFtTest extends UnitTestClassBase {
     public void setUp() throws Exception {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
-        //DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
-        DEVICE_LOGS_FOLDER = "/Users/shahar/MCDeviceLogs/";
+        DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
+        //DEVICE_LOGS_FOLDER = "/Users/shahar/MCDeviceLogs/";
         INSTALL_APP = false;
         UNINSTALL_APP = false;
         HIGHLIGHT = true;
@@ -75,7 +75,6 @@ public class LeanFtTest extends UnitTestClassBase {
                     logMessages("Restarting app:" + app.getName(), LOG_LEVEL.INFO);
                     app.restart();
                 }
-
             } else {
                 logMessages("Device couldn't be allocated, exiting script", LOG_LEVEL.ERROR);
                 noProblem = false;
@@ -128,6 +127,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
             // Tap magnifying glass
             logMessages("Tap magnifying glass", LOG_LEVEL.INFO);
+            windowSync(5000);
             if (HIGHLIGHT)
                 appModel.KPApplication().SearchIconLabel().highlight();
             appModel.KPApplication().SearchIconLabel().tap();
@@ -168,10 +168,10 @@ public class LeanFtTest extends UnitTestClassBase {
             if (INSTALL_APP) {
                 logMessages("Allow...", LOG_LEVEL.INFO);
                 if (HIGHLIGHT)
-                    app.describe(Button.class, new ButtonDescription.Builder().text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).highlight();
-                app.describe(Button.class, new ButtonDescription.Builder().text("Allow").className("Button").resourceId("com.android.packageinstaller:id/permission_allow_button").mobileCenterIndex(1).build()).tap();
+                    appModel.PackageInstallerApplication().AllowContactsButton().highlight();
+                appModel.PackageInstallerApplication().AllowContactsButton().tap();
             }
-            logMessages("\n*** Test Completed Successfully ***\n", LOG_LEVEL.INFO);
+            logMessages("\n****** Test Completed Successfully ******\n", LOG_LEVEL.INFO);
 
         } catch (GeneralReplayException grex) {
             // Err number -110 - device connectivity issues [errors 2036, 2022]
@@ -233,7 +233,7 @@ public class LeanFtTest extends UnitTestClassBase {
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
             description.setOsVersion(">= 6.0.1");
-            description.setName("Nexus 7");
+            //description.setName("Nexus 7");
             //description.setModel("Sony");
             //retDevice =  MobileLab.lockDevice(description);
             retDevice =  MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
@@ -248,7 +248,6 @@ public class LeanFtTest extends UnitTestClassBase {
         }
         return retDevice;
     }
-
 
     private void writeToFile(String text, String fileName) {
         logMessages("In writeToFile() -> File length:" + text.length() + " File name: " + fileName, LOG_LEVEL.INFO);
@@ -277,6 +276,6 @@ public class LeanFtTest extends UnitTestClassBase {
 
     private void logMessages(String message, LOG_LEVEL level) {
         String prefix = (level==LOG_LEVEL.INFO) ? "[I] " : "[E] ";
-        System.out.println(">>> " + prefix + " [" + getTimeStamp("dd/MM/yyyy HH:mm:ss") + "] " + message + " <<<");
+        System.out.println(prefix + " [" + getTimeStamp("dd/MM/yyyy HH:mm:ss") + "] " + message);
     }
 }
