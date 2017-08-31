@@ -51,7 +51,7 @@ public class LeanFtTest extends UnitTestClassBase {
         APP_IDENTIFIER = "org.kp.m";
         //DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
         DEVICE_LOGS_FOLDER = "/Users/shahar/MCDeviceLogs/";
-        INSTALL_APP = true;
+        INSTALL_APP = false;
         UNINSTALL_APP = false;
         HIGHLIGHT = true;
         logMessages("Enter setUp()", LOG_LEVEL.INFO);
@@ -71,8 +71,10 @@ public class LeanFtTest extends UnitTestClassBase {
                 if (INSTALL_APP) {
                     logMessages("Installing app:" + app.getName(), LOG_LEVEL.INFO);
                     app.install();
-                } else
+                } else {
+                    logMessages("Restarting app:" + app.getName(), LOG_LEVEL.INFO);
                     app.restart();
+                }
 
             } else {
                 logMessages("Device couldn't be allocated, exiting script", LOG_LEVEL.ERROR);
@@ -100,6 +102,7 @@ public class LeanFtTest extends UnitTestClassBase {
     public void test() throws GeneralLeanFtException {
         if (!noProblem) return; // check if we had issues in initializing app and device
         if (!initApp()) return;
+        windowSync(3000);
         logMessages("Entering test()", LOG_LEVEL.INFO);
 
         try {
@@ -134,7 +137,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
             logMessages("Click Search...", LOG_LEVEL.INFO);
             TapArgs args = new TapArgs();
-            args.setLocation(new Location(Position.TOP_LEFT, getTapOffsets(0)));
+            args.setLocation(new Location(Position.TOP_LEFT, getTapOffsets()));
             app.describe(UiObject.class, new UiObjectDescription.Builder().accessibilityId("Google Map").className("View").mobileCenterIndex(19).build()).tap(args);
 
             logMessages("Open filters", LOG_LEVEL.INFO);
@@ -186,8 +189,8 @@ public class LeanFtTest extends UnitTestClassBase {
                 logMessages("In test() -> finally statement", LOG_LEVEL.INFO);
                 writeToFile(device.getLogs(), DEVICE_LOGS_FOLDER + "DeviceLog_" + device.getId() + "_" + getTimeStamp("yyyyMMdd_HHmmss") + ".log");
                 logMessages("Exit test()", LOG_LEVEL.INFO);
-            } catch (Exception exx) {
-                logMessages(exx.getMessage(), LOG_LEVEL.ERROR);
+            } catch (NullPointerException npex) {
+                logMessages(npex.getMessage(), LOG_LEVEL.ERROR);
             }
         }
     }
@@ -261,12 +264,11 @@ public class LeanFtTest extends UnitTestClassBase {
         }
     }
 
-    private Point getTapOffsets(int number) {
-        Point offsets[] = new Point[2];
-        offsets[0] = new Point(1150, 1280); // Nexus 7
-        offsets[1] = new Point(998, 1720);  // Pixel
-
-        return offsets[number];
+    private Point getTapOffsets() throws GeneralLeanFtException {
+        Point offsets = new Point(1150, 1280);      // Nexus 7
+        if (device.getName().equals("Pixel")) offsets = new Point(966, 1700);   // Pixel
+        logMessages("Tapping on coordinates: X=" + offsets.getX() + " Y=" + offsets.getY(), LOG_LEVEL.INFO);
+        return offsets;
     }
 
     private String getTimeStamp(String pattern) {
@@ -275,6 +277,6 @@ public class LeanFtTest extends UnitTestClassBase {
 
     private void logMessages(String message, LOG_LEVEL level) {
         String prefix = (level==LOG_LEVEL.INFO) ? "[I] " : "[E] ";
-        System.out.println(">>> " + prefix + " [" + getTimeStamp("dd/MM/yyyy HH:mm:ss") + "] " + message + "<<<");
+        System.out.println(">>> " + prefix + " [" + getTimeStamp("dd/MM/yyyy HH:mm:ss") + "] " + message + " <<<");
     }
 }
