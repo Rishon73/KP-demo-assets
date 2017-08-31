@@ -66,10 +66,10 @@ public class LeanFtTest extends UnitTestClassBase {
                 logMessages("Allocated device: " + currentDevice + ". App in use: \"" + app.getName() + "\" v" + app.getVersion(), LOG_LEVEL.INFO);
 
                 if (INSTALL_APP) {
-                    logMessages("Installing app:" + app.getName(), LOG_LEVEL.INFO);
+                    logMessages("Installing app: " + app.getName(), LOG_LEVEL.INFO);
                     app.install();
                 } else {
-                    logMessages("Restarting app:" + app.getName(), LOG_LEVEL.INFO);
+                    logMessages("Restarting app: " + app.getName(), LOG_LEVEL.INFO);
                     app.restart();
                 }
             } else {
@@ -109,8 +109,8 @@ public class LeanFtTest extends UnitTestClassBase {
             appModel.KPApplication().FindAFacilityLabel().tap();
 
             // Tap "Allow" to device's locations
-            logMessages("Tap \"Allow\" to device's locations", LOG_LEVEL.INFO);
             if (INSTALL_APP) {
+                logMessages("Tap \"Allow\" to device's locations", LOG_LEVEL.INFO);
                 if (HIGHLIGHT)
                     appModel.PackageInstallerApplication().AllowLocationsButton().highlight();
                 appModel.PackageInstallerApplication().AllowLocationsButton().tap();
