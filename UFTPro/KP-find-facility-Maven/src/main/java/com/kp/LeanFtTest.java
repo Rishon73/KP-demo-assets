@@ -46,7 +46,7 @@ public class LeanFtTest extends UnitTestClassBase {
     public void setUp() throws Exception {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
-        DEVICE_LOGS_FOLDER = "C:\\Jenkins\\workspace\\MCDeviceLogs\\";
+        DEVICE_LOGS_FOLDER = "";
         //DEVICE_LOGS_FOLDER = "/Users/shahar/MCDeviceLogs/";
         INSTALL_APP = false;
         UNINSTALL_APP = false;
@@ -261,8 +261,8 @@ public class LeanFtTest extends UnitTestClassBase {
     }
 
     private Point getTapOffsets() throws GeneralLeanFtException {
-        Point offsets = new Point(1150, 1280);      // Nexus 7
-        if (device.getName().equals("Pixel")) offsets = new Point(966, 1700);   // Pixel
+        Point offsets = new Point(1130, 1260);      // Nexus 7
+        if (device.getName().equals("Pixel")) offsets = new Point(946, 1680);   // Pixel // was (966, 1700)
         logMessages("Tapping on coordinates: X=" + offsets.getX() + " Y=" + offsets.getY(), LOG_LEVEL.INFO);
         return offsets;
     }
@@ -272,7 +272,7 @@ public class LeanFtTest extends UnitTestClassBase {
     }
 
     private void logMessages(String message, LOG_LEVEL level) {
-        String prefix = (level==LOG_LEVEL.INFO) ? "[I] " : "[E] ";
+        String prefix = (level==LOG_LEVEL.INFO) ? "[INFO] " : "[ERROR] ";
         System.out.println(prefix + " [" + getTimeStamp("dd/MM/yyyy HH:mm:ss") + "] " + message);
     }
 }
