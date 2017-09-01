@@ -47,10 +47,9 @@ public class LeanFtTest extends UnitTestClassBase {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
         DEVICE_LOGS_FOLDER = "";
-        //DEVICE_LOGS_FOLDER = "/Users/shahar/MCDeviceLogs/";
-        INSTALL_APP = false;
+        INSTALL_APP = true;
         UNINSTALL_APP = false;
-        HIGHLIGHT = true;
+        HIGHLIGHT = false;
         logMessages("Enter setUp()", LOG_LEVEL.INFO);
 
         try {
