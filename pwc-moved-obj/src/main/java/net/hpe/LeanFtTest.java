@@ -91,17 +91,19 @@ public class LeanFtTest extends UnitTestClassBase {
                 }
 
             } else {
-                System.out.println("======= Device couldn't be allocated, exiting script =======");
+                String msg = "======= Device couldn't be allocated, exiting script =======";
+                System.out.println(msg);
                 noProblem = false;
+                System.out.println("flynn");
+                Reporter.reportEvent("Error",msg, Status.Failed);
+                Assert.fail();
             }
         } catch (GeneralReplayException grex) {
             if (grex.getErrorCode() == 2036) {
                 System.out.println(grex.getMessage());
                 noProblem = false;
             }
-            System.out.println("flynn");
-            Reporter.reportEvent("Error","Replay Exception", Status.Failed,grex);
-            Assert.fail();
+
         }
     }
 
