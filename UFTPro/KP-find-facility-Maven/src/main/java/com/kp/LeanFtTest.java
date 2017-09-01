@@ -181,14 +181,13 @@ public class LeanFtTest extends UnitTestClassBase {
             }
         } catch (Exception ex) {
             logMessages(ex.getMessage(), LOG_LEVEL.ERROR);
-        } finally {
             try {
-                logMessages("In test() -> finally statement", LOG_LEVEL.INFO);
                 writeToFile(device.getLogs(), DEVICE_LOGS_FOLDER + "DeviceLog_" + device.getId() + "_" + getTimeStamp("yyyyMMdd_HHmmss") + ".log");
-                logMessages("Exit test()", LOG_LEVEL.INFO);
-            } catch (NullPointerException npex) {
-                logMessages(npex.getMessage(), LOG_LEVEL.ERROR);
+            } catch (Exception exx) {
+                logMessages("Failed creating the device log file. " + ex.getMessage(), LOG_LEVEL.ERROR);
             }
+        } finally {
+            logMessages("Exit test()", LOG_LEVEL.INFO);
         }
     }
 
