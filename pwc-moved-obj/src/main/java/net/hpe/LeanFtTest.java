@@ -67,7 +67,6 @@ public class LeanFtTest extends UnitTestClassBase {
         ad.setVersion(APP_VERSION);
         appDescription[0]=ad;
 
-
         try {
             device = initDevice();
             if (device != null) {

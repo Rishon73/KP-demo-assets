@@ -233,7 +233,6 @@ public class LeanFtTest extends UnitTestClassBase {
             //retDevice =  MobileLab.lockDevice(description);
             retDevice =  MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
             //retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
-            //retDevice =  MobileLab.lockDeviceById("0a9e0bfe");
         } catch (GeneralLeanFtException err) {
             logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
         } catch (Exception ex) {
