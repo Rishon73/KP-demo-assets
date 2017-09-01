@@ -4,11 +4,7 @@ import static org.junit.Assert.*;
 
 import com.hp.lft.report.Reporter;
 import com.hp.lft.report.Status;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import com.hp.lft.sdk.*;
 import com.hp.lft.verifications.*;
 
@@ -103,7 +99,9 @@ public class LeanFtTest extends UnitTestClassBase {
                 System.out.println(grex.getMessage());
                 noProblem = false;
             }
+            System.out.println("flynn");
             Reporter.reportEvent("Error","Replay Exception", Status.Failed,grex);
+            Assert.fail();
         }
     }
 
