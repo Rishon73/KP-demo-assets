@@ -2,6 +2,8 @@ package net.hpe;
 
 import static org.junit.Assert.*;
 
+import com.hp.lft.report.Reporter;
+import com.hp.lft.report.Status;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -101,6 +103,7 @@ public class LeanFtTest extends UnitTestClassBase {
                 System.out.println(grex.getMessage());
                 noProblem = false;
             }
+            Reporter.reportEvent("Error","Replay Exception", Status.Failed,grex);
         }
     }
 
