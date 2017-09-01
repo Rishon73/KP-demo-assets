@@ -2,11 +2,9 @@ package net.hpe;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import com.hp.lft.report.Reporter;
+import com.hp.lft.report.Status;
+import org.junit.*;
 import com.hp.lft.sdk.*;
 import com.hp.lft.verifications.*;
 
@@ -85,20 +83,26 @@ public class LeanFtTest extends UnitTestClassBase {
                 if (INSTALL_APP) {
                     System.out.println("Installing app: " + app.getIdentifier());
                     System.out.println("Version: " + APP_VERSION);
-                    app.install();
+                    //app.install();
+                    app.launch();
                 } else {
                     app.restart();
                 }
 
             } else {
-                System.out.println("======= Device couldn't be allocated, exiting script =======");
+                String msg = "======= Device couldn't be allocated, exiting script =======";
+                System.out.println(msg);
                 noProblem = false;
+                System.out.println("flynn");
+                Reporter.reportEvent("Error",msg, Status.Failed);
+                Assert.fail();
             }
         } catch (GeneralReplayException grex) {
             if (grex.getErrorCode() == 2036) {
                 System.out.println(grex.getMessage());
                 noProblem = false;
             }
+
         }
     }
 
