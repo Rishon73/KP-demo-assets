@@ -20,8 +20,8 @@ public class KPAppiumTest {
     public void setup() {
         // Global vars for setup
         String MC_SERVER = "http://demo.mobilecenter.io:8080";
-        String MC_SERVER_USER = "shahar.shiff@hpe.com";
-        String MC_SERVER_PASSWORD = "Password1";
+        String MC_SERVER_USER = "";
+        String MC_SERVER_PASSWORD = "";
         String APP_PACKAGE = "org.kp.m";
         String APP_ACTIVITY = "org.kp.m.activity.SplashActivity";
 
