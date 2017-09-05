@@ -19,8 +19,9 @@ public class KPAppiumTest {
     @Before
     public void setup() {
         // Global vars for setup
-        String MC_SERVER = "http://demo.mobilecenter.io:8080";
-        String MC_SERVER_USER = "";
+        //String MC_SERVER = "http://demo.mobilecenter.io:8080";    // RnD MC lab
+        String MC_SERVER = "http://hpmc2.globalepps.com:8080";      // PS MC lab
+        String MC_SERVER_USER = "shahar.shiff@hpe.com";
         String MC_SERVER_PASSWORD = "";
         String APP_PACKAGE = "org.kp.m";
         String APP_ACTIVITY = "org.kp.m.activity.SplashActivity";
@@ -31,7 +32,7 @@ public class KPAppiumTest {
 
             // Set device capabilities
             capabilities.setCapability("platformName", "Android");
-            capabilities.setCapability("platformVersion", "6.0.1");
+            capabilities.setCapability("platformVersion", "4.4.2");
 
             // Application capabilities
             capabilities.setCapability("appPackage", APP_PACKAGE);
@@ -99,9 +100,14 @@ public class KPAppiumTest {
             element.click();
             element.sendKeys(zipCode);
 
-            logMessages("Tap on the Google Maps 'search' icon", LOG_LEVEL.INFO);
-            TouchAction touchAction=new TouchAction(driver);
-            touchAction.press(1121, 1492).waitAction(200).release().perform();
+            logMessages("Find the 'search' button", LOG_LEVEL.INFO);
+            element = driver.findElementById("org.kp.m:id/customedMyLocationButton");
+            logMessages("Click the 'search' button", LOG_LEVEL.INFO);
+            element.click();
+
+//        logMessages("Tap on the Google Maps 'search' icon", LOG_LEVEL.INFO);
+//        TouchAction touchAction=new TouchAction(driver);
+//        touchAction.press(1121, 1492).waitAction(200).release().perform();
             //touchAction.tap(1150, 1280).perform();
 
             windowSync(1500);
