@@ -238,12 +238,12 @@ public class LeanFtTest extends UnitTestClassBase {
         Device retDevice = null;
         try {
             logMessages("Init device capabilities", LOG_LEVEL.INFO);
-            if (!deviceID.equals(""))
-                retDevice = MobileLab.lockDeviceById(deviceID);
-            else if (!deviceDescription.equals("")) {
-
-            }
-            else {
+//            if (!deviceID.equals(""))
+//                retDevice = MobileLab.lockDeviceById(deviceID);
+//            else if (!deviceDescription.equals("")) {
+//
+//            }
+//            else {
                 DeviceDescription description = new DeviceDescription();
                 description.setOsType("Android");
                 //description.setOsVersion("4.4.2");
@@ -251,7 +251,7 @@ public class LeanFtTest extends UnitTestClassBase {
                 //description.setModel("Sony");
                 //retDevice =  MobileLab.lockDevice(description);
                 retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
-            }
+//            }
             //retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
         } catch (GeneralLeanFtException err) {
             logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
