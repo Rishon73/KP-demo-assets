@@ -146,7 +146,7 @@ public class LeanFtTest extends UnitTestClassBase {
             else {
                 if (HIGHLIGHT)
                     appModel.KPApplication().OrgKpMIdCustomedMyLoUiObject().highlight();
-                appModel.KPApplication().OrgKpMIdButtonPanelUiObject().tap();
+                appModel.KPApplication().OrgKpMIdCustomedMyLoUiObject().tap();
             }
 
             logMessages("Open filters", LOG_LEVEL.INFO);
