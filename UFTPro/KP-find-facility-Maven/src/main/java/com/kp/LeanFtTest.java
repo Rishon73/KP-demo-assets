@@ -12,6 +12,7 @@ import com.hp.lft.report.*;
 import unittesting.*;
 import java.awt.*;
 import java.io.*;
+import java.lang.*;
 
 public class LeanFtTest extends UnitTestClassBase {
     private static String APP_VERSION;
@@ -27,6 +28,8 @@ public class LeanFtTest extends UnitTestClassBase {
     private static String DEVICE_LOGS_FOLDER;
     private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
     private enum LOG_LEVEL {INFO, ERROR};
+    private static String deviceID = "";
+    private static String deviceDescription = "";
 
     public LeanFtTest() {
         //Change this constructor to private if you supply your own public constructor
@@ -45,6 +48,8 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Before
     public void setUp() throws Exception {
+        deviceID = System.getProperty("deviceID");
+        deviceDescription = System.getProperty("deviceDescription");
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
         DEVICE_LOGS_FOLDER = "";
@@ -233,13 +238,20 @@ public class LeanFtTest extends UnitTestClassBase {
         Device retDevice = null;
         try {
             logMessages("Init device capabilities", LOG_LEVEL.INFO);
-            DeviceDescription description = new DeviceDescription();
-            description.setOsType("Android");
-            //description.setOsVersion("4.4.2");
-            description.setName("Nexus 7");
-            //description.setModel("Sony");
-            //retDevice =  MobileLab.lockDevice(description);
-            retDevice =  MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
+            if (!deviceID.equals(""))
+                retDevice = MobileLab.lockDeviceById(deviceID);
+            else if (!deviceDescription.equals("")) {
+
+            }
+            else {
+                DeviceDescription description = new DeviceDescription();
+                description.setOsType("Android");
+                //description.setOsVersion("4.4.2");
+                //description.setName("Nexus 7");
+                //description.setModel("Sony");
+                //retDevice =  MobileLab.lockDevice(description);
+                retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
+            }
             //retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
         } catch (GeneralLeanFtException err) {
             logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
@@ -286,4 +298,8 @@ public class LeanFtTest extends UnitTestClassBase {
             System.out.println("[ERROR] " + rex.getMessage());
         }
     }
+
+//    private hashMap<String, String> parseDescription(String descriprion) {
+//
+//    }
 }
