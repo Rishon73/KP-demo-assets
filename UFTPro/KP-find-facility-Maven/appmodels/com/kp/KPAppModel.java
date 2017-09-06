@@ -47,6 +47,7 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 	private LosAngelesMedicalCentLabel LosAngelesMedicalCentLabel;
 	private OrgKpMIdButtonPanelUiObject OrgKpMIdButtonPanelUiObject;
 	private FindAFacilityLabel_old FindAFacilityLabel_old;
+	private OrgKpMIdCustomedMyLoUiObject OrgKpMIdCustomedMyLoUiObject;
 						public KPApplication(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
 		{
 			super(parent, applicationModel);
@@ -64,6 +65,7 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 		LosAngelesMedicalCentLabel = new LosAngelesMedicalCentLabel(this, applicationModel);
 		OrgKpMIdButtonPanelUiObject = new OrgKpMIdButtonPanelUiObject(this, applicationModel);
 		FindAFacilityLabel_old = new FindAFacilityLabel_old(this, applicationModel);
+		OrgKpMIdCustomedMyLoUiObject = new OrgKpMIdCustomedMyLoUiObject(this, applicationModel);
 
 			setDisplayName("KP");
 		}
@@ -92,6 +94,7 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 		public LosAngelesMedicalCentLabel LosAngelesMedicalCentLabel() { return LosAngelesMedicalCentLabel; }
 		public OrgKpMIdButtonPanelUiObject OrgKpMIdButtonPanelUiObject() { return OrgKpMIdButtonPanelUiObject; }
 		public FindAFacilityLabel_old FindAFacilityLabel_old() { return FindAFacilityLabel_old; }
+		public OrgKpMIdCustomedMyLoUiObject OrgKpMIdCustomedMyLoUiObject() { return OrgKpMIdCustomedMyLoUiObject; }
 		
 			public class SignInButton extends ButtonNodeBase
 	{
@@ -422,6 +425,32 @@ public class KPAppModel extends AppModelBase {		private KPApplication KPApplicat
 			com.hp.lft.sdk.mobile.LabelDescription description = null; 
 			try{
 				description = new com.hp.lft.sdk.mobile.LabelDescription.Builder().text("Find a Facility2").className("Label").resourceId("org.kp.m:id/sign_in_facility_locator").mobileCenterIndex(8).build();
+			}catch(Exception e){
+				throw new GeneralLeanFtException(e.getMessage(), e);
+			}
+			return description;
+		}
+
+				
+			}
+
+	public class OrgKpMIdCustomedMyLoUiObject extends UiObjectNodeBase
+	{
+
+		
+								public OrgKpMIdCustomedMyLoUiObject(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
+		{
+			super(parent, applicationModel);
+
+			
+			setDisplayName("org.kp.m:id/customedMyLo");
+		}
+
+		@Override
+		protected com.hp.lft.sdk.mobile.UiObjectDescription createDescription() throws GeneralLeanFtException{
+			com.hp.lft.sdk.mobile.UiObjectDescription description = null; 
+			try{
+				description = new com.hp.lft.sdk.mobile.UiObjectDescription.Builder().className("ImageView").resourceId("org.kp.m:id/customedMyLocationButton").mobileCenterIndex(2).build();
 			}catch(Exception e){
 				throw new GeneralLeanFtException(e.getMessage(), e);
 			}

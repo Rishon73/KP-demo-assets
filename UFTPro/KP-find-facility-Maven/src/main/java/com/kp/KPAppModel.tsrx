@@ -165,6 +165,17 @@
                         </properties>
                     </identification>
                 </object>
+                <object type="UiObject" technology="Mobile">
+                    <name>org.kp.m:id/customedMyLo</name>
+                    <codeName>OrgKpMIdCustomedMyLoUiObject</codeName>
+                    <identification>
+                        <properties>
+                            <property name="ClassName" type="string" isRegExp="false">ImageView</property>
+                            <property name="ResourceId" type="string" isRegExp="false">org.kp.m:id/customedMyLocationButton</property>
+                            <property name="MobileCenterIndex" type="int" isRegExp="false">2</property>
+                        </properties>
+                    </identification>
+                </object>
             </children>
         </object>
         <object type="Application" technology="Mobile">

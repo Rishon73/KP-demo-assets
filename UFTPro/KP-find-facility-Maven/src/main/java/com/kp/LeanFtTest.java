@@ -132,9 +132,16 @@ public class LeanFtTest extends UnitTestClassBase {
             appModel.KPApplication().SearchAddressEditField().setText("90210");
 
             logMessages("Click Search...", LOG_LEVEL.INFO);
-            TapArgs args = new TapArgs();
-            args.setLocation(new Location(Position.TOP_LEFT, getTapOffsets()));
-            app.describe(UiObject.class, new UiObjectDescription.Builder().accessibilityId("Google Map").className("View").mobileCenterIndex(19).build()).tap(args);
+            if (device.getId().equals("0a9e0bfe")) { // special case for my Nexus 7
+                TapArgs args = new TapArgs();
+                args.setLocation(new Location(Position.TOP_LEFT, getTapOffsets()));
+                app.describe(UiObject.class, new UiObjectDescription.Builder().accessibilityId("Google Map").className("View").mobileCenterIndex(19).build()).tap(args);
+            }
+            else {
+                if (HIGHLIGHT)
+                    appModel.KPApplication().OrgKpMIdCustomedMyLoUiObject().highlight();
+                appModel.KPApplication().OrgKpMIdButtonPanelUiObject().tap();
+            }
 
             logMessages("Open filters", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
