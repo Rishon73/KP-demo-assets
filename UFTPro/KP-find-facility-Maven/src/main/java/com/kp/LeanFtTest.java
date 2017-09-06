@@ -235,7 +235,7 @@ public class LeanFtTest extends UnitTestClassBase {
             logMessages("Init device capabilities", LOG_LEVEL.INFO);
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
-            description.setOsVersion("4.4.2");
+            //description.setOsVersion("4.4.2");
             //description.setName("Nexus 7");
             //description.setModel("Sony");
             //retDevice =  MobileLab.lockDevice(description);
