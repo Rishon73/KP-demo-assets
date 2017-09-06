@@ -1,5 +1,6 @@
 package com.kp;
 
+import com.hp.lft.sdk.internal.common.MessageFieldNames;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -49,7 +50,7 @@ public class LeanFtTest extends UnitTestClassBase {
         DEVICE_LOGS_FOLDER = "";
         INSTALL_APP = true;
         UNINSTALL_APP = false;
-        HIGHLIGHT = false;
+        HIGHLIGHT = true;
         logMessages("Enter setUp()", LOG_LEVEL.INFO);
 
         try {
@@ -234,8 +235,8 @@ public class LeanFtTest extends UnitTestClassBase {
             logMessages("Init device capabilities", LOG_LEVEL.INFO);
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
-            description.setOsVersion(">= 6.0.1");
-            description.setName("Nexus 7");
+            description.setOsVersion("4.4.2");
+            //description.setName("Nexus 7");
             //description.setModel("Sony");
             //retDevice =  MobileLab.lockDevice(description);
             retDevice =  MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
@@ -276,7 +277,13 @@ public class LeanFtTest extends UnitTestClassBase {
     }
 
     private void logMessages(String message, LOG_LEVEL level) {
-        String prefix = (level==LOG_LEVEL.INFO) ? "[INFO] " : "[ERROR] ";
+        String prefix = (level == LOG_LEVEL.INFO) ? "[INFO] " : "[ERROR] ";
+        Status status = (level == LOG_LEVEL.INFO) ? Status.Passed : Status.Failed;
         System.out.println(prefix + " [" + getTimeStamp("dd/MM/yyyy HH:mm:ss") + "] " + message);
+        try {
+            Reporter.reportEvent(prefix, message, status);
+        } catch (ReportException rex) {
+            System.out.println("[ERROR] " + rex.getMessage());
+        }
     }
 }
