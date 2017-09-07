@@ -13,6 +13,8 @@ import unittesting.*;
 import java.awt.*;
 import java.io.*;
 import java.lang.*;
+import com.google.common.base.Splitter;
+import java.util.Map;
 
 public class LeanFtTest extends UnitTestClassBase {
     private static String APP_VERSION;
@@ -28,8 +30,7 @@ public class LeanFtTest extends UnitTestClassBase {
     private static String DEVICE_LOGS_FOLDER;
     private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
     private enum LOG_LEVEL {INFO, ERROR};
-    private static String deviceID = "";
-    private static String deviceDescription = "";
+    private static String deviceInfoFromParam = null;
 
     public LeanFtTest() {
         //Change this constructor to private if you supply your own public constructor
@@ -48,8 +49,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Before
     public void setUp() throws Exception {
-        deviceID = System.getProperty("deviceID");
-        deviceDescription = System.getProperty("deviceDescription");
+        deviceInfoFromParam = System.getProperty("deviceInfo");
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
         DEVICE_LOGS_FOLDER = "";
@@ -237,21 +237,47 @@ public class LeanFtTest extends UnitTestClassBase {
     private Device initDevice() throws GeneralLeanFtException {
         Device retDevice = null;
         try {
-            logMessages("Init device capabilities", LOG_LEVEL.INFO);
-//            if (!deviceID.equals(""))
-//                retDevice = MobileLab.lockDeviceById(deviceID);
-//            else if (!deviceDescription.equals("")) {
-//
-//            }
-//            else {
-                DeviceDescription description = new DeviceDescription();
+            logMessages("Init device capabilities...", LOG_LEVEL.INFO);
+            DeviceDescription description = new DeviceDescription();
+            if (!deviceInfoFromParam.equals("")) { // check if there are arg parameters
+                Map<String, String> deviceInfo = parseDescription(deviceInfoFromParam);
+                logMessages("Parameters are: " + deviceInfo.toString(), LOG_LEVEL.INFO);
+
+                /*
+                The parameters are expected in this format: device.id=4100c600e4b242b3;device.version=111;device.name=222;device.model=333;device.ostype=444;device.manufacturer=555
+                Param1=value1;param2=...
+                if device.id is present in the args, rest of the args will be ignored
+                */
+                // if there's device id - lock device by device ID
+                if (deviceInfo.containsKey("device.id")) {
+                    logMessages("Requesting device by device Id ('" + deviceInfo.get("device.id") + "')", LOG_LEVEL.INFO);
+                    retDevice = MobileLab.lockDeviceById(deviceInfo.get("device.id"));
+                }
+                // check if other descriptors are in the args param. If yes, set it to the deviceDescription object
+                else {
+                    logMessages("Requesting device by device capabilities from args param: " + deviceInfo.toString(), LOG_LEVEL.INFO);
+                    if (deviceInfo.containsKey("device.ostype") && !deviceInfo.get("device.ostype").equals(""))
+                        description.setOsType(deviceInfo.get("device.ostype"));
+                    if (deviceInfo.containsKey("device.version") && !deviceInfo.get("device.version").equals(""))
+                        description.setOsType(deviceInfo.get("device.version"));
+                    if (deviceInfo.containsKey("device.name") && !deviceInfo.get("device.name").equals(""))
+                        description.setOsType(deviceInfo.get("device.name"));
+                    if (deviceInfo.containsKey("device.model") && !deviceInfo.get("device.model").equals(""))
+                        description.setOsType(deviceInfo.get("device.model"));
+                    if (deviceInfo.containsKey("device.manufacturer") && !deviceInfo.get("device.manufacturer").equals(""))
+                        description.setOsType(deviceInfo.get("device.manufacturer"));
+
+                    retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
+                }
+            }
+            else {
                 description.setOsType("Android");
-                //description.setOsVersion("4.4.2");
+                description.setOsVersion("6.0.1");
                 //description.setName("Nexus 7");
                 //description.setModel("Sony");
                 //retDevice =  MobileLab.lockDevice(description);
                 retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
-//            }
+            }
             //retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
         } catch (GeneralLeanFtException err) {
             logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
@@ -299,7 +325,13 @@ public class LeanFtTest extends UnitTestClassBase {
         }
     }
 
-//    private hashMap<String, String> parseDescription(String descriprion) {
-//
-//    }
+    private Map<String,String> parseDescription(String description) throws Exception{
+        if (description.contains("="))
+            return Splitter.on(";").withKeyValueSeparator("=").split(description);
+        else {
+            throw new Exception("Device description doesn't contain '=', cannot parse it");
+            //logMessages("Device description doesn't contain '=', cannot parse it", LOG_LEVEL.ERROR);
+            //return null;
+        }
+    }
 }
