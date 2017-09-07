@@ -143,19 +143,20 @@
     </build>
     <profiles>
         <profile>
-            <id>Select Device by Description</id>
+            <id>Select_Device_by_Description</id>
             <properties>
                 <!--
                 Available params:
                 if device.id presents, rest of the params will be ignored
                 device.id=4100c600e4b242b3
-                device.version=4.4.2;
+                device.id=d065ac68
+                device.version=6.0.1;
                 device.name=SAMSUNG-SGH-I337;
                 device.model=333;
                 device.ostype=Android;
                 device.manufacturer=samsung;
                 -->
-                <deviceInfo>device.id=d065ac68</deviceInfo>
+                <deviceInfo>device.manufacturer=samsung;device.ostype=Android;device.version=6.0.1</deviceInfo>
                 <jvm.options>-DdeviceInfo="${deviceInfo}"</jvm.options>
             </properties>
         </profile>

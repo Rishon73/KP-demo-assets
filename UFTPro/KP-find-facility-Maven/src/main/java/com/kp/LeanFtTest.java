@@ -49,16 +49,16 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Before
     public void setUp() throws Exception {
-        deviceInfoFromParam = System.getProperty("deviceInfo");
+        logMessages("Enter setUp() method ", LOG_LEVEL.INFO);
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
         DEVICE_LOGS_FOLDER = "";
-        INSTALL_APP = true;
+        INSTALL_APP = false;
         UNINSTALL_APP = false;
         HIGHLIGHT = true;
-        logMessages("Enter setUp()", LOG_LEVEL.INFO);
 
         try {
+            deviceInfoFromParam = System.getProperty("deviceInfo");// == null ? null : System.getProperty("deviceInfo");
             device = initDevice();
             if (device != null) {
                 Description desc = device.getDescription();
@@ -66,7 +66,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
                 appDescription[0] = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
                 app = device.describe(Application.class, appDescription[0]);
-                currentDevice = "\"" + device.getName() + "\" (" + device.getId() + "), Model :" + device.getModel() + ", OS: " + device.getOSType() + " version: " + device.getOSVersion();
+                currentDevice = "\"" + device.getName() + "\" (" + device.getId() + "), Model :" + device.getModel() + ", OS: " + device.getOSType() + " version: " + device.getOSVersion() + ", manufacturer: " + device.getManufacturer();
 
                 logMessages("Allocated device: " + currentDevice + ". App in use: \"" + app.getName() + "\" v" + app.getVersion(), LOG_LEVEL.INFO);
 
@@ -81,6 +81,8 @@ public class LeanFtTest extends UnitTestClassBase {
                 logMessages("Device couldn't be allocated, exiting script", LOG_LEVEL.ERROR);
                 noProblem = false;
             }
+        } catch (NullPointerException npex) {
+            logMessages("NullPointerException in setup(): " + npex.getMessage(), LOG_LEVEL.ERROR);
         } catch (GeneralReplayException grex) {
             if (grex.getErrorCode() == 2036) {
                 logMessages("GeneralReplayException in setup(): " + grex.getMessage(), LOG_LEVEL.ERROR);
@@ -239,7 +241,9 @@ public class LeanFtTest extends UnitTestClassBase {
         try {
             logMessages("Init device capabilities...", LOG_LEVEL.INFO);
             DeviceDescription description = new DeviceDescription();
-            if (!deviceInfoFromParam.equals("")) { // check if there are arg parameters
+
+            // check if there are arg parameters
+            if (deviceInfoFromParam != null) {
                 Map<String, String> deviceInfo = parseDescription(deviceInfoFromParam);
                 logMessages("Parameters are: " + deviceInfo.toString(), LOG_LEVEL.INFO);
 
@@ -255,24 +259,24 @@ public class LeanFtTest extends UnitTestClassBase {
                 }
                 // check if other descriptors are in the args param. If yes, set it to the deviceDescription object
                 else {
-                    logMessages("Requesting device by device capabilities from args param: " + deviceInfo.toString(), LOG_LEVEL.INFO);
-                    if (deviceInfo.containsKey("device.ostype") && !deviceInfo.get("device.ostype").equals(""))
-                        description.setOsType(deviceInfo.get("device.ostype"));
-                    if (deviceInfo.containsKey("device.version") && !deviceInfo.get("device.version").equals(""))
-                        description.setOsType(deviceInfo.get("device.version"));
-                    if (deviceInfo.containsKey("device.name") && !deviceInfo.get("device.name").equals(""))
-                        description.setOsType(deviceInfo.get("device.name"));
-                    if (deviceInfo.containsKey("device.model") && !deviceInfo.get("device.model").equals(""))
-                        description.setOsType(deviceInfo.get("device.model"));
-                    if (deviceInfo.containsKey("device.manufacturer") && !deviceInfo.get("device.manufacturer").equals(""))
-                        description.setOsType(deviceInfo.get("device.manufacturer"));
+                    logMessages("Requesting device by device capabilities from command arguments: " + deviceInfo.toString(), LOG_LEVEL.INFO);
+                    for (Map.Entry<String, String> entry : deviceInfo.entrySet())
+                    {
+                        if (entry.getKey().equals("device.ostype")) description.setOsType(entry.getValue());
+                        if (entry.getKey().equals("device.version")) description.setOsVersion(entry.getValue());
+                        if (entry.getKey().equals("device.name")) description.setName(entry.getValue());
+                        if (entry.getKey().equals("device.model")) description.setModel(entry.getValue());
+                        if (entry.getKey().equals("device.manufacturer")) description.setManufacturer(entry.getValue());
+                    }
 
                     retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
                 }
             }
+            // hard code select device
             else {
                 description.setOsType("Android");
-                description.setOsVersion("6.0.1");
+                //description.setManufacturer("asus");
+                description.setOsVersion("4.4.2");
                 //description.setName("Nexus 7");
                 //description.setModel("Sony");
                 //retDevice =  MobileLab.lockDevice(description);
