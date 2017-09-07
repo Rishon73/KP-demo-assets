@@ -160,5 +160,17 @@
                 <jvm.options>-DdeviceInfo="${deviceInfo}"</jvm.options>
             </properties>
         </profile>
+        <profile>
+            <id>Select_Device_by_Id</id>
+            <properties>
+                <!--
+                Available params:
+                device.id=4100c600e4b242b3
+                device.id=d065ac68
+                -->
+                <deviceInfo>device.id=4100c600e4b242b3</deviceInfo>
+                <jvm.options>-DdeviceInfo="${deviceInfo}"</jvm.options>
+            </properties>
+        </profile>
     </profiles>
 </project>

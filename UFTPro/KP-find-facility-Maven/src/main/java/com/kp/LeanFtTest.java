@@ -275,8 +275,8 @@ public class LeanFtTest extends UnitTestClassBase {
             // hard code select device
             else {
                 description.setOsType("Android");
-                //description.setManufacturer("asus");
                 description.setOsVersion("4.4.2");
+                //description.setManufacturer("asus");
                 //description.setName("Nexus 7");
                 //description.setModel("Sony");
                 //retDevice =  MobileLab.lockDevice(description);
