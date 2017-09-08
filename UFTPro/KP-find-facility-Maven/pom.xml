@@ -166,9 +166,9 @@
                 <!--
                 Available params:
                 device.id=4100c600e4b242b3
-                device.id=d065ac68
+                device.id=d065ac68 / 0a9e0bfe
                 -->
-                <deviceInfo>device.id=0a9e0bfe</deviceInfo>
+                <deviceInfo>device.id=4100c600e4b242b3</deviceInfo>
                 <jvm.options>-DdeviceInfo="${deviceInfo}"</jvm.options>
             </properties>
         </profile>
