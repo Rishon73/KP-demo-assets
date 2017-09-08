@@ -1,11 +1,7 @@
 package com.kp;
 
 import com.hp.lft.sdk.internal.common.MessageFieldNames;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import com.hp.lft.sdk.*;
 import com.hp.lft.sdk.mobile.*;
 import com.hp.lft.report.*;
@@ -188,13 +184,15 @@ public class LeanFtTest extends UnitTestClassBase {
             // Err number -110 - device connectivity issues [errors 2036, 2022]
             if (grex.getErrorCode() == -110)
                 logMessages("error -110 (device connectivity issues)\n" + grex.getMessage(), LOG_LEVEL.ERROR);
+            Assert.fail();
             // Err number '-111' - Object identification issues
             if (grex.getErrorCode() == -111) {
                 // Object cannot be found. Verify that this object's properties match an object currently displayed in your application.
                 logMessages("error -111 (object identification issue)\n" + grex.getMessage(), LOG_LEVEL.ERROR);
+                Assert.fail();
             }
         } catch (Exception ex) {
-            logMessages(ex.getMessage(), LOG_LEVEL.ERROR);
+            logMessages(ex.getMessage() + "\n" + ex.getClass().toString(), LOG_LEVEL.ERROR);
             try {
                 writeToFile(device.getLogs(), DEVICE_LOGS_FOLDER + "DeviceLog_" + device.getId() + "_" + getTimeStamp("yyyyMMdd_HHmmss") + ".log");
             } catch (Exception exx) {
@@ -285,8 +283,10 @@ public class LeanFtTest extends UnitTestClassBase {
             //retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
         } catch (GeneralLeanFtException err) {
             logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
+            Assert.fail();
         } catch (Exception ex) {
             logMessages("General error: " + ex.getMessage(), LOG_LEVEL.ERROR);
+            Assert.fail();
         } finally {
             logMessages("Exit initDevice()", LOG_LEVEL.INFO);
         }
