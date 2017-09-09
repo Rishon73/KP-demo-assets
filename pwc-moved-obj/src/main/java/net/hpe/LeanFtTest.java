@@ -43,9 +43,8 @@ public class LeanFtTest extends UnitTestClassBase {
     @Before
     public void setUp() throws Exception {
         String appVersion = System.getProperty("appVersion");
-        if (appVersion != null) {
+        if (appVersion != null)
             APP_VERSION = System.getProperty("appVersion");
-        }
 
         APP_IDENTIFIER = "com.advantageonlineshopping.advantage";
         INSTALL_APP = true;
@@ -121,9 +120,9 @@ public class LeanFtTest extends UnitTestClassBase {
             logMessages("Init device capabilities for test...", LOG_LEVEL.INFO);
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
-            description.setOsVersion("> 6.0");
+            //description.setOsVersion("> 6.0");
             //description.setId("CB5A23UKKM");
-            //description.setName("Nexus 7");
+            description.setName("SM-N910C");
             //description.setModel("Sony");
             //return MobileLab.lockDevice(description);
             return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
