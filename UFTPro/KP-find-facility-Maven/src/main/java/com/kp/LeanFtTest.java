@@ -246,8 +246,8 @@ public class LeanFtTest extends UnitTestClassBase {
                 logMessages("Parameters are: " + deviceInfo.toString(), LOG_LEVEL.INFO);
 
                 /*
-                The parameters are expected in this format: device.id=4100c600e4b242b3;device.version=111;device.name=222;device.model=333;device.ostype=444;device.manufacturer=555
-                Param1=value1;param2=...
+                The parameters are expected in this format: device.id:4100c600e4b242b3;device.version:111;device.name:222;device.model:333;device.ostype:444;device.manufacturer:555
+                Param1:value1;param2:...
                 if device.id is present in the args, rest of the args will be ignored
                 */
                 // if there's device id - lock device by device ID
@@ -331,9 +331,9 @@ public class LeanFtTest extends UnitTestClassBase {
 
     private Map<String,String> parseDescription(String description) throws Exception{
         if (description.contains("="))
-            return Splitter.on(";").withKeyValueSeparator("=").split(description);
+            return Splitter.on(";").withKeyValueSeparator(":").split(description);
         else {
-            throw new Exception("Device description doesn't contain '=', cannot parse it");
+            throw new Exception("Device description doesn't contain ':' between parameter and value (param:value), cannot parse it");
             //logMessages("Device description doesn't contain '=', cannot parse it", LOG_LEVEL.ERROR);
             //return null;
         }
