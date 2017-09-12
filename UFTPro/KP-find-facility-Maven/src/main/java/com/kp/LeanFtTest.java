@@ -330,7 +330,7 @@ public class LeanFtTest extends UnitTestClassBase {
     }
 
     private Map<String,String> parseDescription(String description) throws Exception{
-        if (description.contains("="))
+        if (description.contains(":"))
             return Splitter.on(";").withKeyValueSeparator(":").split(description);
         else {
             throw new Exception("Device description doesn't contain ':' between parameter and value (param:value), cannot parse it");
