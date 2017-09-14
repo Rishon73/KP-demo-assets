@@ -49,7 +49,7 @@ public class LeanFtTest extends UnitTestClassBase {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
         DEVICE_LOGS_FOLDER = "";
-        INSTALL_APP = false;
+        INSTALL_APP = true;
         UNINSTALL_APP = false;
         HIGHLIGHT = true;
 
@@ -57,7 +57,6 @@ public class LeanFtTest extends UnitTestClassBase {
             deviceInfoFromParam = System.getProperty("deviceInfo");// == null ? null : System.getProperty("deviceInfo");
             device = initDevice();
             if (device != null) {
-                Description desc = device.getDescription();
                 appModel = new KPAppModel(device);
 
                 appDescription[0] = new ApplicationDescription.Builder().identifier(APP_IDENTIFIER).packaged(false).version(APP_VERSION).build();
@@ -103,6 +102,24 @@ public class LeanFtTest extends UnitTestClassBase {
         if (!initApp()) return;
         windowSync(3000);
         logMessages("Entering test()", LOG_LEVEL.INFO);
+/*
+        try {
+            // Tap "Find a Facility" button
+            logMessages("Tap \"Find a Facility\" button", LOG_LEVEL.INFO);
+            device.describe(Application.class, new ApplicationDescription.Builder()
+                    .identifier("org.kp.m")
+                    .packaged(false).build())
+                    .describe(com.hp.lft.sdk.mobile.Label.class, new LabelDescription.Builder()
+                            .className("Label")
+                            .mobileCenterIndex(8)
+                            .resourceId("org.kp.m:id/sign_in_facility_locator")
+                            .text("Find a Facility").build());
+
+            // Tap "Allow" to device's locations
+
+        } catch (GeneralReplayException grex) {
+
+        }*/
 
         try {
             // Tap "Find a Facility" button
@@ -273,7 +290,7 @@ public class LeanFtTest extends UnitTestClassBase {
             // hard code select device
             else {
                 description.setOsType("Android");
-                description.setOsVersion("4.4.2");
+                description.setOsVersion(">= 4.4.2");
                 //description.setManufacturer("asus");
                 //description.setName("Nexus 7");
                 //description.setModel("Sony");
