@@ -49,7 +49,7 @@ public class LeanFtTest extends UnitTestClassBase {
         APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
         DEVICE_LOGS_FOLDER = "";
-        INSTALL_APP = true;
+        INSTALL_APP = false;
         UNINSTALL_APP = false;
         HIGHLIGHT = true;
 
@@ -102,24 +102,6 @@ public class LeanFtTest extends UnitTestClassBase {
         if (!initApp()) return;
         windowSync(3000);
         logMessages("Entering test()", LOG_LEVEL.INFO);
-/*
-        try {
-            // Tap "Find a Facility" button
-            logMessages("Tap \"Find a Facility\" button", LOG_LEVEL.INFO);
-            device.describe(Application.class, new ApplicationDescription.Builder()
-                    .identifier("org.kp.m")
-                    .packaged(false).build())
-                    .describe(com.hp.lft.sdk.mobile.Label.class, new LabelDescription.Builder()
-                            .className("Label")
-                            .mobileCenterIndex(8)
-                            .resourceId("org.kp.m:id/sign_in_facility_locator")
-                            .text("Find a Facility").build());
-
-            // Tap "Allow" to device's locations
-
-        } catch (GeneralReplayException grex) {
-
-        }*/
 
         try {
             // Tap "Find a Facility" button
@@ -144,7 +126,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
             // Tap magnifying glass
             logMessages("Tap magnifying glass", LOG_LEVEL.INFO);
-            windowSync(5000);
+            windowSync(1000);
             if (HIGHLIGHT)
                 appModel.KPApplication().SearchIconLabel().highlight();
             appModel.KPApplication().SearchIconLabel().tap();
