@@ -94,8 +94,16 @@ public class LeanFtTest extends UnitTestClassBase {
         Thread.sleep(3000);
         try {
             logMessages("Tap Speakers", LOG_LEVEL.INFO);
-            if (HIGHLIGHT)
-                appModel.AOS().SPEAKERS().highlight();
+            if (HIGHLIGHT) {
+                //appModel.AOS().SPEAKERS().highlight();
+                device.describe(Application.class, new ApplicationDescription.Builder()
+                        .identifier("com.advantageonlineshopping.advantage")
+                        .packaged(false).build())
+                        .describe(Label.class, new LabelDescription.Builder()
+                                .className("Label")
+                                .resourceId("com.advantageonlineshopping.advantage:id/textViewCategory")
+                                .text("SPEAKERS").build()).highlight();
+            }
             appModel.AOS().SPEAKERS().tap();
 
             logMessages("Tap Bose", LOG_LEVEL.INFO);
