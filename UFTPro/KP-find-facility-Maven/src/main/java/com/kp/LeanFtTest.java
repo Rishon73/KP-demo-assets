@@ -233,7 +233,7 @@ public class LeanFtTest extends UnitTestClassBase {
         }
     }
 
-    private Device initDevice() throws GeneralLeanFtException {
+    private Device initDevice() {
         Device retDevice = null;
         try {
             logMessages("Init device capabilities...", LOG_LEVEL.INFO);
