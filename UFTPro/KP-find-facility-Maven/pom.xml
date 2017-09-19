@@ -148,15 +148,15 @@
                 <!--
                 Available params:
                 if device.id presents, rest of the params will be ignored
-                device.id=4100c600e4b242b3
-                device.id=d065ac68
-                device.version=6.0.1;
-                device.name=SAMSUNG-SGH-I337;
-                device.model=333;
-                device.ostype=Android;
-                device.manufacturer=samsung;
+                device.id:4100c600e4b242b3
+                device.id:d065ac68
+                device.version:6.0.1;
+                device.name:SAMSUNG-SGH-I337;
+                device.model:333;
+                device.ostype:Android;
+                device.manufacturer:samsung;
                 -->
-                    <deviceInfo>device.ostype:Android;device.version:6.0.1</deviceInfo>
+                    <deviceInfo>device.version:6.0.1;device.manufacturer:samsung</deviceInfo>
                 <jvm.options>-DdeviceInfo="${deviceInfo}"</jvm.options>
             </properties>
         </profile>
