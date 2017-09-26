@@ -168,7 +168,7 @@
                 device.id:4100c600e4b242b3
                 device.id:d065ac68 / 0a9e0bfe / 4100c600e4b242b3
                 -->
-                <deviceInfo>device.id:0a9e0bfe</deviceInfo>
+                <deviceInfo>device.id:d065ac68</deviceInfo>
                 <jvm.options>-DdeviceInfo="${deviceInfo}"</jvm.options>
             </properties>
         </profile>
