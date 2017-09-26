@@ -183,19 +183,19 @@ public class LeanFtTest extends UnitTestClassBase {
             // Err number -110 - device connectivity issues [errors 2036, 2022]
             if (grex.getErrorCode() == -110)
                 logMessages("error -110 (device connectivity issues)\n" + grex.getMessage(), LOG_LEVEL.ERROR);
-            Assert.fail();
             // Err number '-111' - Object identification issues
             if (grex.getErrorCode() == -111) {
                 // Object cannot be found. Verify that this object's properties match an object currently displayed in your application.
                 logMessages("error -111 (object identification issue)\n" + grex.getMessage(), LOG_LEVEL.ERROR);
-                Assert.fail();
             }
+            Assert.fail();
         } catch (Exception ex) {
             logMessages(ex.getMessage() + "\n" + ex.getClass().toString(), LOG_LEVEL.ERROR);
             try {
                 writeToFile(device.getLogs(), DEVICE_LOGS_FOLDER + "DeviceLog_" + device.getId() + "_" + getTimeStamp("yyyyMMdd_HHmmss") + ".log");
             } catch (Exception exx) {
                 logMessages("Failed creating the device log file. " + ex.getMessage(), LOG_LEVEL.ERROR);
+                Assert.fail();
             }
         } finally {
             logMessages("Exit test()", LOG_LEVEL.INFO);
