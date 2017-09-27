@@ -188,15 +188,16 @@ public class LeanFtTest extends UnitTestClassBase {
                 // Object cannot be found. Verify that this object's properties match an object currently displayed in your application.
                 logMessages("error -111 (object identification issue)\n" + grex.getMessage(), LOG_LEVEL.ERROR);
             }
-            Assert.fail();
+            logMessages(grex.getMessage() + "\n" + grex.getErrorCode(), LOG_LEVEL.ERROR);
+            Assert.fail("Assertion failure");
         } catch (Exception ex) {
             logMessages(ex.getMessage() + "\n" + ex.getClass().toString(), LOG_LEVEL.ERROR);
             try {
                 writeToFile(device.getLogs(), DEVICE_LOGS_FOLDER + "DeviceLog_" + device.getId() + "_" + getTimeStamp("yyyyMMdd_HHmmss") + ".log");
             } catch (Exception exx) {
                 logMessages("Failed creating the device log file. " + ex.getMessage(), LOG_LEVEL.ERROR);
-                Assert.fail();
             }
+            Assert.fail("Assertion failure");
         } finally {
             logMessages("Exit test()", LOG_LEVEL.INFO);
         }
@@ -282,10 +283,10 @@ public class LeanFtTest extends UnitTestClassBase {
             //retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
         } catch (GeneralLeanFtException err) {
             logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
-            Assert.fail();
+            Assert.fail("Assertion failure");
         } catch (Exception ex) {
             logMessages("General error: " + ex.getMessage(), LOG_LEVEL.ERROR);
-            Assert.fail();
+            Assert.fail("Assertion failure");
         } finally {
             logMessages("Exit initDevice()", LOG_LEVEL.INFO);
         }
