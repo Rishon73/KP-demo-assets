@@ -24,12 +24,9 @@ public class LeanFtTest extends UnitTestClassBase {
     private static String APP_IDENTIFIER;
     private static String currentDevice;
     private static boolean INSTALL_APP;
-    private static boolean UNINSTALL_APP;
-    private static boolean HIGHLIGHT;
     private static Device device;
     private static boolean noProblem = true;
     private static Application app;
-    private static String DEVICE_LOGS_FOLDER;
     private static ApplicationDescription[] appDescription = new ApplicationDescription[1];
     private enum LOG_LEVEL {INFO, ERROR};
     private HybridAppModel appModel;
@@ -39,10 +36,7 @@ public class LeanFtTest extends UnitTestClassBase {
         logMessages("Enter setUp() method ", LOG_LEVEL.INFO);
         APP_VERSION = "18";
         APP_IDENTIFIER = "com.hpeit.mobile.cpxorderstatus";
-        DEVICE_LOGS_FOLDER = "";
         INSTALL_APP = true;
-        UNINSTALL_APP = false;
-        HIGHLIGHT = true;
 
         try {
             device = initDevice();
@@ -127,10 +121,6 @@ public class LeanFtTest extends UnitTestClassBase {
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
             description.setOsVersion("> 6.0");
-            //description.setId("CB5A23UKKM");
-            //description.setName("Nexus 7");
-            //description.setModel("Sony");
-            //return MobileLab.lockDevice(description);
             return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
         } catch (GeneralLeanFtException err) {
             logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
