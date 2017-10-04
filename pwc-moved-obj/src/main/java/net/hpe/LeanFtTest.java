@@ -50,23 +50,24 @@ public class LeanFtTest extends UnitTestClassBase {
         INSTALL_APP = true;
         HIGHLIGHT = true;
 
-        appDescription[0] = new ApplicationDescription();
-        appDescription[0].setIdentifier(APP_IDENTIFIER);
-        appDescription[0].setPackaged(true);
-        appDescription[0].setVersion(APP_VERSION);
-
         try {
             device = initDevice();
             if (device != null) {
+                appDescription[0] = new ApplicationDescription();
+                appDescription[0].setIdentifier(APP_IDENTIFIER);
+                appDescription[0].setPackaged(true);
+                appDescription[0].setVersion(APP_VERSION);
+
                 appModel = new AOSModel(device);
                 app = device.describe(Application.class, appDescription[0]);
                 currentDevice = "\"" + device.getName() + "\" (" + device.getId() + "), Model :" + device.getModel() + ", OS: " + device.getOSType() + " version: " + device.getOSVersion();
+                logMessages("Allocated device: " + currentDevice + ". App in use: \"" + app.getName() + "\" v" + app.getVersion(), LOG_LEVEL.INFO);
 
                 if (INSTALL_APP) {
                     logMessages("Installing app: " + app.getIdentifier() + ", Version: " + APP_VERSION, LOG_LEVEL.INFO);
-                    //app.install();
-                    app.launch();
+                    app.install();
                 } else {
+                    logMessages("Restarting app: " + app.getIdentifier() + ", Version: " + APP_VERSION, LOG_LEVEL.INFO);
                     app.restart();
                 }
 
