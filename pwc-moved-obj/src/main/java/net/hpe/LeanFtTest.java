@@ -120,6 +120,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
         } catch (GeneralLeanFtException e) {
             logMessages(e.getMessage(), LOG_LEVEL.ERROR);
+            Assert.fail("Something went wrong in the test. Check LeanFT report.");
         }
     }
 
