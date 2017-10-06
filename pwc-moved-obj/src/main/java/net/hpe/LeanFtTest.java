@@ -10,7 +10,6 @@ import unittesting.*;
 import com.hp.lft.sdk.mobile.*;
 
 
-
 public class LeanFtTest extends UnitTestClassBase {
     private static String APP_VERSION;
     private static String APP_IDENTIFIER;
