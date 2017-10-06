@@ -1,30 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.kp</groupId>
-    <artifactId>KP-find-facility-maven</artifactId>
+    <groupId>com.mf</groupId>
+    <artifactId>HybridAppdemo</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>LeanFT JUnit Test</name>
-    <description>LeanFT JUnit Test</description>
+    <name>LeanFT TestNG Test</name>
+    <description>LeanFT TestNG Test</description>
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8</version>
         </dependency>
 
         <dependency>
             <groupId>com.hp.lft</groupId>
             <artifactId>sdk</artifactId>
             <version>14.1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.hp.lft</groupId>
-            <artifactId>sdk</artifactId>
-            <version>14.1.0</version>
-            <classifier>javadoc</classifier>
         </dependency>
 
         <dependency>
@@ -44,29 +37,17 @@
             <artifactId>verifications</artifactId>
             <version>14.1.0</version>
         </dependency>
-
-        <!--dependency>
-            <groupId>com.qmetry</groupId>
-            <artifactId>qaf</artifactId>
-            <version>latest.integration</version>
-        </dependency>
-        <dependency>
-            <groupId>com.qmetry</groupId>
-            <artifactId>qaf-support</artifactId>
-            <version>latest.integration</version>
-        </dependency-->
     </dependencies>
 
     <repositories>
-    <!--<repository>
-            <id>Your repository's ID</id>
+        <!--<repository>
+                <id>Your repository's ID</id>
                 <name>Your repository's name</name>
                 <url>URL of the repository containing the LeanFT jar files</url>
-        </repository>-->
+            </repository>-->
     </repositories>
 
     <build>
-        <testSourceDirectory>src/main/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -130,47 +111,7 @@
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.19.1</version>
-                    <configuration>
-                        <argLine>${jvm.options}</argLine>
-                    </configuration>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
-    <profiles>
-        <profile>
-            <id>Select_Device_by_Description</id>
-            <properties>
-                <!--
-                Available params:
-                if device.id presents, rest of the params will be ignored
-                device.id:4100c600e4b242b3
-                device.id:d065ac68
-                device.version:6.0.1;
-                device.name:SAMSUNG-SGH-I337;
-                device.model:333;
-                device.ostype:Android;
-                device.manufacturer:samsung;
-                -->
-                    <deviceInfo>device.version:6.0.1;device.manufacturer:samsung</deviceInfo>
-                <jvm.options>-DdeviceInfo="${deviceInfo}"</jvm.options>
-            </properties>
-        </profile>
-        <profile>
-            <id>Select_Device_by_Id</id>
-            <properties>
-                <!--
-                Available params:
-                device.id:4100c600e4b242b3
-                device.id:d065ac68 / 0a9e0bfe / 4100c600e4b242b3
-                -->
-                <deviceInfo>device.id:d065ac68</deviceInfo>
-                <jvm.options>-DdeviceInfo="${deviceInfo}"</jvm.options>
-            </properties>
-        </profile>
-    </profiles>
 </project>

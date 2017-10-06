@@ -1,17 +1,33 @@
-package net.hpe;
+package net.hpe.presales;
+
+import java.io.IOException;
 
 import com.hp.lft.report.ReportException;
 import com.hp.lft.report.Reporter;
 import com.hp.lft.report.Status;
-import org.junit.*;
-import com.hp.lft.sdk.*;
-
-import unittesting.*;
+import com.hp.lft.sdk.GeneralLeanFtException;
+import com.hp.lft.sdk.GeneralReplayException;
 import com.hp.lft.sdk.mobile.*;
+import com.hp.lft.sdk.web.*;
+import com.hp.lft.verifications.Verify;
+
+import cucumber.api.PendingException;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import cucumber.api.java.en.And;
+import net.hpe.AOSModel;
+import org.junit.Assert;
 
 
-
-public class LeanFtTest extends UnitTestClassBase {
+/**
+ * Created by Administrator on 8/14/2016.
+ */
+public class AdvantageStepDefinitions
+{
     private static String APP_VERSION;
     private static String APP_IDENTIFIER;
     private static String currentDevice;
@@ -25,23 +41,9 @@ public class LeanFtTest extends UnitTestClassBase {
 
     private enum LOG_LEVEL {INFO, ERROR};
 
-    public LeanFtTest() {
-        //Change this constructor to private if you supply your own public constructor
-    }
-
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        instance = new LeanFtTest();
-        globalSetup(LeanFtTest.class);
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-        globalTearDown();
-    }
-
     @Before
-    public void setUp() throws Exception {
+    public void beforeScenario(Scenario scenario) throws IOException, GeneralLeanFtException, ReportException, InterruptedException {
+        //the following will start a new test node in the report
         String appVersion = System.getProperty("appVersion");
         if (appVersion != null)
             APP_VERSION = System.getProperty("appVersion");
@@ -50,24 +52,23 @@ public class LeanFtTest extends UnitTestClassBase {
         INSTALL_APP = true;
         HIGHLIGHT = true;
 
+        appDescription[0] = new ApplicationDescription();
+        appDescription[0].setIdentifier(APP_IDENTIFIER);
+        appDescription[0].setPackaged(true);
+        appDescription[0].setVersion(APP_VERSION);
+
         try {
             device = initDevice();
             if (device != null) {
-                appDescription[0] = new ApplicationDescription();
-                appDescription[0].setIdentifier(APP_IDENTIFIER);
-                appDescription[0].setPackaged(true);
-                appDescription[0].setVersion(APP_VERSION);
-
                 appModel = new AOSModel(device);
                 app = device.describe(Application.class, appDescription[0]);
                 currentDevice = "\"" + device.getName() + "\" (" + device.getId() + "), Model :" + device.getModel() + ", OS: " + device.getOSType() + " version: " + device.getOSVersion();
-                logMessages("Allocated device: " + currentDevice + ". App in use: \"" + app.getName() + "\" v" + app.getVersion(), LOG_LEVEL.INFO);
 
                 if (INSTALL_APP) {
                     logMessages("Installing app: " + app.getIdentifier() + ", Version: " + APP_VERSION, LOG_LEVEL.INFO);
-                    app.install();
+                    //app.install();
+                    app.launch();
                 } else {
-                    logMessages("Restarting app: " + app.getIdentifier() + ", Version: " + APP_VERSION, LOG_LEVEL.INFO);
                     app.restart();
                 }
 
@@ -82,47 +83,48 @@ public class LeanFtTest extends UnitTestClassBase {
                 noProblem = false;
             }
         }
+
+        if (!noProblem) return;
+        Thread.sleep(3000);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void afterScenario() throws InterruptedException, ReportException, GeneralLeanFtException {
+
     }
 
-    @Test
-    public void test() throws GeneralLeanFtException, InterruptedException {
-        if (!noProblem) return;
-
-        Thread.sleep(3000);
-        try {
-            logMessages("Tap Speakers", LOG_LEVEL.INFO);
-            if (HIGHLIGHT) {
-                //appModel.AOS().SPEAKERS().highlight();
-                device.describe(Application.class, new ApplicationDescription.Builder()
-                        .identifier("com.advantageonlineshopping.advantage")
-                        .packaged(false).build())
-                        .describe(Label.class, new LabelDescription.Builder()
-                                .className("Label")
-                                .resourceId("com.advantageonlineshopping.advantage:id/textViewCategory")
-                                .text("SPEAKERS").build()).highlight();
-            }
-            appModel.AOS().SPEAKERS().tap();
-
-            logMessages("Tap Bose", LOG_LEVEL.INFO);
-            if (HIGHLIGHT)
-                appModel.AOS().BOSESOUNDLINKBLUETOOTHSPEAKER().highlight();
-            appModel.AOS().BOSESOUNDLINKBLUETOOTHSPEAKER().tap();
-
-            logMessages("Tap to put/add to cart", LOG_LEVEL.INFO);
-            if (HIGHLIGHT) {
-                appModel.AOS().PUT_IN_CART().highlight();
-                appModel.AOS().PUT_IN_CART().highlight();
-            }
-            appModel.AOS().PUT_IN_CART().tap();
-
-        } catch (GeneralLeanFtException e) {
-            logMessages(e.getMessage(), LOG_LEVEL.ERROR);
+    @Given("^User is viewing the product$")
+    public void userIsViewingTheProduct() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        //throw new PendingException();
+        logMessages("Tap Speakers", LOG_LEVEL.INFO);
+        if (HIGHLIGHT) {
+            appModel.AOS().SPEAKERS().highlight();
         }
+        appModel.AOS().SPEAKERS().tap();
+
+        logMessages("Tap Bose", LOG_LEVEL.INFO);
+        if (HIGHLIGHT)
+            appModel.AOS().BOSESOUNDLINKBLUETOOTHSPEAKER().highlight();
+        appModel.AOS().BOSESOUNDLINKBLUETOOTHSPEAKER().tap();
     }
+
+    @When("^\"([^\"]*)\" is selected$")
+    public void isSelected(String arg0) throws Throwable {
+        logMessages("Tap to put/add to cart", LOG_LEVEL.INFO);
+        if (HIGHLIGHT) {
+            appModel.AOS().PUT_IN_CART().highlight();
+        }
+        appModel.AOS().PUT_IN_CART().tap();
+    }
+
+    @Then("^Product should then be seen in the shopping cart.$")
+    public void productSeenInCart(){
+        int qtyExpected =1;
+        int qtyFound = 1;
+        Verify.areEqual(qtyExpected,qtyFound);
+    }
+
 
     private Device initDevice() throws GeneralLeanFtException {
         try {

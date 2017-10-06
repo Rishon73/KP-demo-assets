@@ -183,13 +183,13 @@ public class LeanFtTest extends UnitTestClassBase {
             // Err number -110 - device connectivity issues [errors 2036, 2022]
             if (grex.getErrorCode() == -110)
                 logMessages("error -110 (device connectivity issues)\n" + grex.getMessage(), LOG_LEVEL.ERROR);
-            Assert.fail();
             // Err number '-111' - Object identification issues
             if (grex.getErrorCode() == -111) {
                 // Object cannot be found. Verify that this object's properties match an object currently displayed in your application.
                 logMessages("error -111 (object identification issue)\n" + grex.getMessage(), LOG_LEVEL.ERROR);
-                Assert.fail();
             }
+            logMessages(grex.getMessage() + "\n" + grex.getErrorCode(), LOG_LEVEL.ERROR);
+            Assert.fail("Assertion failure");
         } catch (Exception ex) {
             logMessages(ex.getMessage() + "\n" + ex.getClass().toString(), LOG_LEVEL.ERROR);
             try {
@@ -197,6 +197,7 @@ public class LeanFtTest extends UnitTestClassBase {
             } catch (Exception exx) {
                 logMessages("Failed creating the device log file. " + ex.getMessage(), LOG_LEVEL.ERROR);
             }
+            Assert.fail("Assertion failure");
         } finally {
             logMessages("Exit test()", LOG_LEVEL.INFO);
         }
@@ -233,7 +234,7 @@ public class LeanFtTest extends UnitTestClassBase {
         }
     }
 
-    private Device initDevice() throws GeneralLeanFtException {
+    private Device initDevice() {
         Device retDevice = null;
         try {
             logMessages("Init device capabilities...", LOG_LEVEL.INFO);
@@ -282,10 +283,10 @@ public class LeanFtTest extends UnitTestClassBase {
             //retDevice = MobileLab.lockDevice(description, appDescription, DeviceSource.AMAZON_DEVICE_FARM);
         } catch (GeneralLeanFtException err) {
             logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
-            Assert.fail();
+            Assert.fail("Assertion failure");
         } catch (Exception ex) {
             logMessages("General error: " + ex.getMessage(), LOG_LEVEL.ERROR);
-            Assert.fail();
+            Assert.fail("Assertion failure");
         } finally {
             logMessages("Exit initDevice()", LOG_LEVEL.INFO);
         }
