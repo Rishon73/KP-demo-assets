@@ -1,3 +1,4 @@
+// version 2.0
 package com.kp;
 
 import com.hp.lft.sdk.internal.common.MessageFieldNames;
