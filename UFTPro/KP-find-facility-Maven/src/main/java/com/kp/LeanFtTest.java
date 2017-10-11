@@ -199,6 +199,8 @@ public class LeanFtTest extends UnitTestClassBase {
             }
             Assert.fail("Assertion failure");
         } finally {
+            writeToFile(device.getLogs(), DEVICE_LOGS_FOLDER + "DeviceLog_" + device.getId() + "_" + getTimeStamp("yyyyMMdd_HHmmss") + ".log");
+
             logMessages("Exit test()", LOG_LEVEL.INFO);
         }
     }
