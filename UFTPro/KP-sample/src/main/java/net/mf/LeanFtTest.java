@@ -41,8 +41,6 @@ public class LeanFtTest extends UnitTestClassBase {
     public static void setUpBeforeClass() throws Exception {
         instance = new LeanFtTest();
         globalSetup(LeanFtTest.class);
-        System.out.println("Working Directory = " +
-                System.getProperty("user.dir"));
     }
 
     @AfterClass
@@ -52,30 +50,29 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Before
     public void setUp() throws Exception {
-        String appVersion = System.getProperty("appVersion");
-        if (appVersion != null)
-            APP_VERSION = System.getProperty("appVersion");
+        APP_VERSION = "100";
 
         APP_IDENTIFIER = "com.advantageonlineshopping.advantage";
         INSTALL_APP = true;
         HIGHLIGHT = true;
 
-        appDescription[0] = new ApplicationDescription();
-        appDescription[0].setIdentifier(APP_IDENTIFIER);
-        appDescription[0].setPackaged(true);
-        appDescription[0].setVersion(APP_VERSION);
-
         try {
             device = initDevice();
             if (device != null) {
+                appDescription[0] = new ApplicationDescription();
+                appDescription[0].setIdentifier(APP_IDENTIFIER);
+                appDescription[0].setPackaged(true);
+                appDescription[0].setVersion(APP_VERSION);
+
                 appModel = new AOSmodel(device);
                 app = device.describe(Application.class, appDescription[0]);
                 currentDevice = "\"" + device.getName() + "\" (" + device.getId() + "), Model :" + device.getModel() + ", OS: " + device.getOSType() + " version: " + device.getOSVersion();
 
+                logMessages(currentDevice, LOG_LEVEL.INFO);
                 if (INSTALL_APP) {
                     logMessages("Installing app: " + app.getIdentifier() + ", Version: " + APP_VERSION, LOG_LEVEL.INFO);
-                    //app.install();
-                    app.launch();
+                    app.install();
+                    //app.launch();
                 } else {
                     app.restart();
                 }
@@ -104,7 +101,7 @@ public class LeanFtTest extends UnitTestClassBase {
         imageToFind=javax.imageio.ImageIO.read(new File(System.getProperty("user.dir")+"/src/main/resources/cartButton.png"));
         if (!noProblem) return;
 
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         try {
             logMessages("Tap Speakers", LOG_LEVEL.INFO);
             if (HIGHLIGHT) {
@@ -124,12 +121,10 @@ public class LeanFtTest extends UnitTestClassBase {
                 appModel.AOS().BOSE().highlight();
             appModel.AOS().BOSE().tap();
 
-            logMessages("Tap to put/add to cart", LOG_LEVEL.INFO);
-            if (HIGHLIGHT) {
+            logMessages("Varify 'Tap to put/add to cart' button is in the correct location", LOG_LEVEL.INFO);
+            if (HIGHLIGHT)
                 appModel.AOS().PUTINCART().highlight();
-                appModel.AOS().PUTINCART().highlight();
-            }
-            //appModel.AOS().PUTINCART().tap();
+
             logMessages("Button Size: " +appModel.AOS().PUTINCART().getSize().getWidth() +" x "+appModel.AOS().PUTINCART().getSize().getHeight(), LOG_LEVEL.INFO);
             Point pointActual = appModel.AOS().PUTINCART().getLocation();
             Point pointExpected = new Point(0,0);
@@ -146,11 +141,12 @@ public class LeanFtTest extends UnitTestClassBase {
             "<h1>Button Relative Location to Bottom Frame Section</h1><br><b>"+
             "X offset: "+String.valueOf(x.intValue()- pointActual.getX())+"<br>"+
             "Y offset: "+String.valueOf(y.intValue()- pointActual.getY())+"</b>");
-            //imageToFind=appModel.AOS().PUTINCART().getSnapshot();
-            //javax.imageio.ImageIO.write(imageToFind, "png", new File(System.getProperty("user.dir")+"/src/main/resources/cartButton.png"));
+            imageToFind=appModel.AOS().PUTINCART().getSnapshot();
+            javax.imageio.ImageIO.write(imageToFind, "png", new File(System.getProperty("user.dir")+"/src/main/resources/cartButton.png"));
             appModel.AOS().PUTINCART().verifyImageMatch(imageToFind);
 
-
+            logMessages("Tap 'add to cart' after image assertion", LOG_LEVEL.INFO);
+            appModel.AOS().PUTINCART().tap();
 
         } catch (GeneralLeanFtException e) {
             logMessages(e.getMessage(), LOG_LEVEL.ERROR);
@@ -167,7 +163,8 @@ public class LeanFtTest extends UnitTestClassBase {
             //description.setName("Nexus 7");
             //description.setModel("Sony");
             //return MobileLab.lockDevice(description);
-            return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
+            return MobileLab.lockDeviceById("4100c600e4b242b3");
+            //return MobileLab.lockDevice(description, appDescription, DeviceSource.MOBILE_CENTER);
         } catch (GeneralLeanFtException err) {
             logMessages("failed allocating device: " + err.getMessage(), LOG_LEVEL.ERROR);
             return null;
