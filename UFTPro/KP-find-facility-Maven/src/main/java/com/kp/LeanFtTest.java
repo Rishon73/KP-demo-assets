@@ -48,7 +48,7 @@ public class LeanFtTest extends UnitTestClassBase {
     @Before
     public void setUp() throws Exception {
         logMessages("Enter setUp() method ", LOG_LEVEL.INFO);
-        APP_VERSION = "41600005";
+        APP_VERSION = "41700006";
         APP_IDENTIFIER = "org.kp.m";
         DEVICE_LOGS_FOLDER = "";
         INSTALL_APP = false;
@@ -100,6 +100,18 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Test
     public void test() throws GeneralLeanFtException {
+
+        device.describe(Application.class, new ApplicationDescription.Builder()
+                .identifier("org.kp.m")
+                .packaged(false).build())
+                .describe(com.hp.lft.sdk.mobile.Label.class, new LabelDescription.Builder()
+                        .className("CheckedLabel")
+                        .checked(true)
+                        .mobileCenterIndex(7)
+                        .resourceId("org.kp.m:id/checked_row_text_view")
+                        .text("Vision Services").build());
+
+
         if (!noProblem) return; // check if we had issues in initializing app and device
         if (!initApp()) return;
         windowSync(3000);
