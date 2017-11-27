@@ -176,6 +176,19 @@
                         </properties>
                     </identification>
                 </object>
+                <object type="Label" technology="Mobile">
+                    <name>Vision Services</name>
+                    <codeName>VisionServicesLabel</codeName>
+                    <description></description>
+                    <identification>
+                        <properties>
+                            <property name="ClassName" type="string" isRegExp="false">CheckedLabel</property>
+                            <property name="IsChecked" type="boolean" isRegExp="false">false</property>
+                            <property name="ResourceId" type="string" isRegExp="false">org.kp.m:id/checked_row_text_view</property>
+                            <property name="Text" type="string" isRegExp="false">Vision Services</property>
+                        </properties>
+                    </identification>
+                </object>
             </children>
         </object>
         <object type="Application" technology="Mobile">
