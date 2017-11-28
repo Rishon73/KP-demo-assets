@@ -96,20 +96,24 @@ public class LeanFtTest extends UnitTestClassBase {
             logMessages("Tap Speakers", LOG_LEVEL.INFO);
             if (HIGHLIGHT) {
                 //appModel.AOS().SPEAKERS().highlight();
+
+
                 device.describe(Application.class, new ApplicationDescription.Builder()
                         .identifier("com.advantageonlineshopping.advantage")
-                        .packaged(false).build())
+                        .packaged(true).build())
                         .describe(Label.class, new LabelDescription.Builder()
                                 .className("Label")
-                                .resourceId("com.advantageonlineshopping.advantage:id/textViewCategory")
-                                .text("SPEAKERS").build()).highlight();
+                                .mobileCenterIndex(3)
+                                .resourceId("textViewCategory")
+                                .text("SPEAKERS").build());
+
             }
             appModel.AOS().SPEAKERS().tap();
 
             logMessages("Tap Bose", LOG_LEVEL.INFO);
             if (HIGHLIGHT)
-                appModel.AOS().BOSESOUNDLINKBLUETOOTHSPEAKER().highlight();
-            appModel.AOS().BOSESOUNDLINKBLUETOOTHSPEAKER().tap();
+                appModel.AOS().BOSESOUNDLINKWIRELESSSPEAKERLabel().highlight();
+            appModel.AOS().BOSESOUNDLINKWIRELESSSPEAKERLabel().tap();
 
             logMessages("Tap to put/add to cart", LOG_LEVEL.INFO);
             if (HIGHLIGHT) {
@@ -130,7 +134,7 @@ public class LeanFtTest extends UnitTestClassBase {
             DeviceDescription description = new DeviceDescription();
             description.setOsType("Android");
             //description.setOsVersion("> 6.0");
-            //description.setId("CB5A23UKKM");
+            //description.setId("0a9e0bfe");
             //description.setName("Nexus 7");
             //description.setModel("Sony");
             //return MobileLab.lockDevice(description);

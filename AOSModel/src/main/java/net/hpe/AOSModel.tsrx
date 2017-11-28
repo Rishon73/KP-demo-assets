@@ -35,6 +35,20 @@
                             <property name="ClassName" type="string" isRegExp="false">Label</property>
                             <property name="ResourceId" type="string" isRegExp="false">textViewProductName</property>
                             <property name="Text" type="string" isRegExp="false">BOSE SOUNDLINK BLUETOOTH SPEAKER III</property>
+                            <property name="MobileCenterIndex" type="int" isRegExp="false">0</property>
+                        </properties>
+                    </identification>
+                </object>
+                <object type="Label" technology="Mobile">
+                    <name>BOSE SOUNDLINK WIRELESS SPEAKER</name>
+                    <codeName>BOSESOUNDLINKWIRELESSSPEAKERLabel</codeName>
+                    <description></description>
+                    <identification>
+                        <properties>
+                            <property name="ClassName" type="string" isRegExp="false">Label</property>
+                            <property name="MobileCenterIndex" type="int" isRegExp="false">0</property>
+                            <property name="ResourceId" type="string" isRegExp="false">textViewProductName</property>
+                            <property name="Text" type="string" isRegExp="false">BOSE SOUNDLINK WIRELESS SPEAKER</property>
                         </properties>
                     </identification>
                 </object>
@@ -46,7 +60,7 @@
                         <properties>
                             <property name="ClassName" type="string" isRegExp="false">Button</property>
                             <property name="ResourceId" type="string" isRegExp="false">buttonProductAddToCart</property>
-                            <property name="Text" type="string" isRegExp="false">PONER EN CARRITO</property>
+                            <property name="Text" type="string" isRegExp="false">PUT IN CART</property>
                         </properties>
                     </identification>
                 </object>

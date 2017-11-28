@@ -33,6 +33,7 @@ public class AOSModel extends AppModelBase {		private AOS AOS;
 		
 			private SPEAKERS SPEAKERS;
 	private BOSESOUNDLINKBLUETOOTHSPEAKER BOSESOUNDLINKBLUETOOTHSPEAKER;
+	private BOSESOUNDLINKWIRELESSSPEAKERLabel BOSESOUNDLINKWIRELESSSPEAKERLabel;
 	private PUT_IN_CART PUT_IN_CART;
 						public AOS(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
 		{
@@ -40,6 +41,7 @@ public class AOSModel extends AppModelBase {		private AOS AOS;
 
 					SPEAKERS = new SPEAKERS(this, applicationModel);
 		BOSESOUNDLINKBLUETOOTHSPEAKER = new BOSESOUNDLINKBLUETOOTHSPEAKER(this, applicationModel);
+		BOSESOUNDLINKWIRELESSSPEAKERLabel = new BOSESOUNDLINKWIRELESSSPEAKERLabel(this, applicationModel);
 		PUT_IN_CART = new PUT_IN_CART(this, applicationModel);
 
 			setDisplayName("Advantage Shopping");
@@ -58,6 +60,7 @@ public class AOSModel extends AppModelBase {		private AOS AOS;
 
 				public SPEAKERS SPEAKERS() { return SPEAKERS; }
 		public BOSESOUNDLINKBLUETOOTHSPEAKER BOSESOUNDLINKBLUETOOTHSPEAKER() { return BOSESOUNDLINKBLUETOOTHSPEAKER; }
+		public BOSESOUNDLINKWIRELESSSPEAKERLabel BOSESOUNDLINKWIRELESSSPEAKERLabel() { return BOSESOUNDLINKWIRELESSSPEAKERLabel; }
 		public PUT_IN_CART PUT_IN_CART() { return PUT_IN_CART; }
 		
 			public class SPEAKERS extends LabelNodeBase
@@ -102,7 +105,33 @@ public class AOSModel extends AppModelBase {		private AOS AOS;
 		protected com.hp.lft.sdk.mobile.LabelDescription createDescription() throws GeneralLeanFtException{
 			com.hp.lft.sdk.mobile.LabelDescription description = null; 
 			try{
-				description = new com.hp.lft.sdk.mobile.LabelDescription.Builder().className("Label").resourceId("textViewProductName").text("BOSE SOUNDLINK BLUETOOTH SPEAKER III").build();
+				description = new com.hp.lft.sdk.mobile.LabelDescription.Builder().className("Label").resourceId("textViewProductName").text("BOSE SOUNDLINK BLUETOOTH SPEAKER III").mobileCenterIndex(0).build();
+			}catch(Exception e){
+				throw new GeneralLeanFtException(e.getMessage(), e);
+			}
+			return description;
+		}
+
+				
+			}
+
+	public class BOSESOUNDLINKWIRELESSSPEAKERLabel extends LabelNodeBase
+	{
+
+		
+								public BOSESOUNDLINKWIRELESSSPEAKERLabel(TestObject parent, AppModelBase applicationModel) throws GeneralLeanFtException
+		{
+			super(parent, applicationModel);
+
+			
+			setDisplayName("BOSE SOUNDLINK WIRELESS SPEAKER");
+		}
+
+		@Override
+		protected com.hp.lft.sdk.mobile.LabelDescription createDescription() throws GeneralLeanFtException{
+			com.hp.lft.sdk.mobile.LabelDescription description = null; 
+			try{
+				description = new com.hp.lft.sdk.mobile.LabelDescription.Builder().className("Label").mobileCenterIndex(0).resourceId("textViewProductName").text("BOSE SOUNDLINK WIRELESS SPEAKER").build();
 			}catch(Exception e){
 				throw new GeneralLeanFtException(e.getMessage(), e);
 			}
@@ -128,7 +157,7 @@ public class AOSModel extends AppModelBase {		private AOS AOS;
 		protected com.hp.lft.sdk.mobile.ButtonDescription createDescription() throws GeneralLeanFtException{
 			com.hp.lft.sdk.mobile.ButtonDescription description = null; 
 			try{
-				description = new com.hp.lft.sdk.mobile.ButtonDescription.Builder().className("Button").resourceId("buttonProductAddToCart").text("PONER EN CARRITO").build();
+				description = new com.hp.lft.sdk.mobile.ButtonDescription.Builder().className("Button").resourceId("buttonProductAddToCart").text("PUT IN CART").build();
 			}catch(Exception e){
 				throw new GeneralLeanFtException(e.getMessage(), e);
 			}
