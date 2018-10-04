@@ -48,7 +48,7 @@ public class LeanFtTest extends UnitTestClassBase {
     @Before
     public void setUp() throws Exception {
         logMessages("Enter setUp() method ", LOG_LEVEL.INFO);
-        APP_VERSION = "41700006";
+        APP_VERSION = "41600005";
         APP_IDENTIFIER = "org.kp.m";
         DEVICE_LOGS_FOLDER = "";
         INSTALL_APP = false;
